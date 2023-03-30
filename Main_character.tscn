@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://coseowvas6jaj"]
+
+[ext_resource type="Texture2D" uid="uid://dr6fjlqvnide1" path="res://BEAR_sprite.png" id="1_j16ud"]
+[ext_resource type="Script" path="res://Main_character.gd" id="1_xlosw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6g33a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_j16ud")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xb1lw"]
+radius = 32.0
+height = 64.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_xlosw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, 8)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_6g33a")
+frame_progress = 0.488605
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(4.76837e-07, 4.76837e-07)
+limit_left = 0
+limit_top = 0
+limit_bottom = 648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_xb1lw")
