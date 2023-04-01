@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://coseowvas6jaj" path="res://Main_character.tscn" id="1_fdvn4"]
 [ext_resource type="PackedScene" uid="uid://bvdqqodr8jowj" path="res://lab_background.tscn" id="2_5k035"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node"]
 
 [node name="B34RCharacter" parent="." instance=ExtResource("1_fdvn4")]
 z_index = 1

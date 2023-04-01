@@ -23,7 +23,7 @@ func _process(delta):
 	var velocity = Vector2.ZERO
 	velocity = Vector2.ONE*direction*speed
 	position += velocity*delta
-	position.x = clamp(position.x, 0, screen_size.x)
+	position.x = clamp(position.x, 0, 10*screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 	
 	if direction.x != 0:
