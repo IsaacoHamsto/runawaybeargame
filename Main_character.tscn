@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://coseowvas6jaj"]
+[gd_scene load_steps=5 format=3 uid="uid://bh0ycservk6nk"]
 
-[ext_resource type="Texture2D" uid="uid://dr6fjlqvnide1" path="res://BEAR_sprite.png" id="1_j16ud"]
+[ext_resource type="Texture2D" uid="uid://cpc15aw8g7ebc" path="res://Resources/BEAR_sprite.png" id="1_j16ud"]
 [ext_resource type="Script" path="res://Main_character.gd" id="1_xlosw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6g33a"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvdqqodr8jowj"]
+
+[ext_resource type="Script" path="res://background.gd" id="1_sumbu"]
+[ext_resource type="Texture2D" uid="uid://b51obfu4ltb7a" path="res://Resources/lab_background.png" id="1_yvl0f"]
+
+[node name="Background" type="Node2D"]
+script = ExtResource("1_sumbu")
+
+[node name="LabSprite" type="Sprite2D" parent="."]
+position = Vector2(1166.16, 322.75)
+scale = Vector2(1.82213, 1.82213)
+texture = ExtResource("1_yvl0f")
+
+[node name="MainMenuSprite" type="Sprite2D" parent="."]

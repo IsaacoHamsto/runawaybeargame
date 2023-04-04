@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
-var speed = 250.0
+var speed = 300.0
 var screen_size = Vector2.ZERO
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	self.hide()
 
 func _process(delta):
 	var direction := Vector2.ZERO
@@ -28,3 +29,6 @@ func _process(delta):
 	
 	if direction.x != 0:
 		$AnimatedSprite2D.flip_h = direction.x < 0
+
+func _on_start_game():
+	self.show()

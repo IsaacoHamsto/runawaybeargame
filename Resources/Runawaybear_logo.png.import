@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b51obfu4ltb7a"
-path="res://.godot/imported/lab_background.png-1358f94932b05a5b9a6239752037a4e9.ctex"
+uid="uid://58qj20xfqr6j"
+path="res://.godot/imported/Runawaybear_logo.png-143aa3a6e9c04de01f2d1a872f2f9d99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/lab_background.png"
-dest_files=["res://.godot/imported/lab_background.png-1358f94932b05a5b9a6239752037a4e9.ctex"]
+source_file="res://Resources/Runawaybear_logo.png"
+dest_files=["res://.godot/imported/Runawaybear_logo.png-143aa3a6e9c04de01f2d1a872f2f9d99.ctex"]
 
 [params]
 

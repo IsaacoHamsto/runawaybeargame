@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3dyov4gr2pq8"]
+[gd_scene load_steps=4 format=3 uid="uid://d2wrco7o0l4wh"]
 
-[ext_resource type="PackedScene" uid="uid://coseowvas6jaj" path="res://Main_character.tscn" id="1_fdvn4"]
-[ext_resource type="PackedScene" uid="uid://bvdqqodr8jowj" path="res://lab_background.tscn" id="2_5k035"]
+[ext_resource type="PackedScene" uid="uid://bh0ycservk6nk" path="res://Main_character.tscn" id="1_fdvn4"]
+[ext_resource type="PackedScene" uid="uid://bvdqqodr8jowj" path="res://background.tscn" id="2_5k035"]
+[ext_resource type="PackedScene" uid="uid://d3q6xe1yrwec8" path="res://HUD.tscn" id="3_x55y2"]
 
 [node name="Main" type="Node"]
 
@@ -10,3 +11,9 @@ z_index = 1
 position = Vector2(336, 504)
 
 [node name="Background" parent="." instance=ExtResource("2_5k035")]
+z_index = -1
+
+[node name="HUD" parent="." instance=ExtResource("3_x55y2")]
+
+[connection signal="start_game" from="HUD" to="B34RCharacter" method="_on_start_game"]
+[connection signal="start_game" from="HUD" to="Background" method="_on_start_game"]
