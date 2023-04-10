@@ -1,0 +1,111 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3q6xe1yrwec8"]
+
+[ext_resource type="FontFile" uid="uid://b15ui78hvfg7i" path="res://Resources/Bubbly-Regular.otf" id="1_8puca"]
+[ext_resource type="Script" path="res://HUD.gd" id="1_kjf7x"]
+[ext_resource type="Texture2D" uid="uid://58qj20xfqr6j" path="res://Resources/Runawaybear_logo.png" id="2_qigtp"]
+
+[sub_resource type="Theme" id="Theme_ospn5"]
+default_font = ExtResource("1_8puca")
+default_font_size = 0
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_kjf7x")
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LeaveButton" type="Button" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 492.0
+offset_top = 476.0
+offset_right = 620.0
+offset_bottom = 526.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ospn5")
+theme_override_font_sizes/font_size = 42
+text = "SAIR
+"
+
+[node name="Logo" type="TextureRect" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 11.275
+anchor_top = 3.2
+anchor_right = 17.525
+anchor_bottom = 9.4
+offset_left = -88.0
+offset_top = -136.0
+offset_right = 88.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_qigtp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PlayButton" type="Button" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 492.0
+offset_top = 364.0
+offset_right = 620.0
+offset_bottom = 414.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ospn5")
+theme_override_font_sizes/font_size = 42
+text = "JOGAR
+"
+
+[node name="ConfigButton" type="Button" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 408.0
+offset_top = 420.0
+offset_right = 704.0
+offset_bottom = 470.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ospn5")
+theme_override_font_sizes/font_size = 42
+text = "CONFIGURAcOES
+"
+
+[node name="MessageLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="MainMenu/PlayButton" to="." method="_on_playButton_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_messageTimer_timeout"]
