@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready():
+	$MainMenuSprite.show()
 	$LabSprite.hide()
 	$ForestSprite.hide()
 

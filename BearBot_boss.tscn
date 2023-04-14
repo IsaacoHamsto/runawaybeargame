@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqchcusutcp7t"]
+
+[ext_resource type="Texture2D" uid="uid://b3hoaooe2nqfv" path="res://Resources/BearBot/477 Sem Título_20230410080916.png" id="1_hhcmk"]
+[ext_resource type="Texture2D" uid="uid://cx0eso4pkqfgy" path="res://Resources/BearBot/477 Sem Título_20230410080934.png" id="2_14gom"]
+[ext_resource type="Texture2D" uid="uid://dfh742lnif3kr" path="res://Resources/BearBot/477 Sem Título_20230410081101.png" id="3_acunu"]
+[ext_resource type="Texture2D" uid="uid://bwpea2djicdi3" path="res://Resources/BearBot/477 Sem Título_20230410081119.png" id="4_ne30r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggx7t"]
+radius = 180.0
+height = 470.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tdqgp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hhcmk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_14gom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_acunu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ne30r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -60)
+shape = SubResource("CapsuleShape2D_ggx7t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tdqgp")
+frame_progress = 0.933474

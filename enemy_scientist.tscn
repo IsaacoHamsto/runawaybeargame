@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3m7s8e1hwdqj"]
 
 [ext_resource type="Script" path="res://enemy_scientist.gd" id="1_a6dcs"]
-[ext_resource type="Texture2D" uid="uid://cb1fnysj8r2c" path="res://Sprites/scientist.png" id="2_1gdid"]
+[ext_resource type="Texture2D" uid="uid://cb1fnysj8r2c" path="res://Resources/scientist.png" id="2_1gdid"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60ei0"]
 radius = 40.0
