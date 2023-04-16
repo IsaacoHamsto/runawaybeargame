@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 300.0
+var SPEED = 300.0
 var screenSize = Vector2.ZERO
 
 func _ready():
@@ -21,8 +21,7 @@ func _process(delta):
 	if direction.length() > 0:
 		direction = direction.normalized()
 	
-	var velocity = Vector2.ZERO
-	velocity = Vector2.ONE*direction*speed
+	velocity = Vector2.ONE*direction*SPEED
 	position += velocity*delta
 	position.x = clamp(position.x, 0, 10*screenSize.x)
 	position.y = clamp(position.y, 0, screenSize.y)

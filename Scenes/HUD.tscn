@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3q6xe1yrwec8"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="FontFile" uid="uid://b15ui78hvfg7i" path="res://Resources/Bubbly-Regular.otf" id="1_8puca"]
-[ext_resource type="Script" path="res://HUD.gd" id="1_kjf7x"]
+[ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_kjf7x"]
 [ext_resource type="Texture2D" uid="uid://58qj20xfqr6j" path="res://Resources/Runawaybear_logo.png" id="2_qigtp"]
 
 [sub_resource type="Theme" id="Theme_ospn5"]

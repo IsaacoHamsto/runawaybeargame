@@ -23,11 +23,11 @@ func show_game_over():
 
 func logo_animate(t):
 	var logoScale = Vector2.ONE
-	logoScale=logoScale*(sin(t)/3+1)
+	logoScale=logoScale*(pow(sin(t), 2)/10+1)
 	$MainMenu/Logo.scale = logoScale
 
 func _process(delta):
 	time += delta
-	if(time>PI):
-		time -= PI
+	if(time>=PI):
+		time = 0
 	logo_animate(time)

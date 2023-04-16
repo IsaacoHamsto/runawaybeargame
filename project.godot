@@ -11,14 +11,18 @@ config_version=5
 [application]
 
 config/name="Runaway Bear"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
+boot_splash/bg_color=Color(0.113725, 0.168627, 0.184314, 1)
+boot_splash/image="res://Resources/CIGI_logo.png"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=1000
 
 [display]
 
 window/size/mode=3
 window/stretch/mode="canvas_items"
+window/minimum_display_time=1
 
 [input]
 

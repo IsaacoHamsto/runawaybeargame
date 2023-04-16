@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1s1jth0geffp"]
+
+[ext_resource type="PackedScene" uid="uid://cpgawwowibr4n" path="res://Scenes/Main_character.tscn" id="1_fdvn4"]
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_t7kew"]
+[ext_resource type="PackedScene" uid="uid://d0nr88yfnfqjs" path="res://Scenes/enemy_scientist.tscn" id="2_0t3c0"]
+[ext_resource type="PackedScene" path="res://Scenes/background.tscn" id="2_5k035"]
+[ext_resource type="PackedScene" path="res://Scenes/HUD.tscn" id="3_x55y2"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_t7kew")
+enemyScene = ExtResource("2_0t3c0")
+
+[node name="Background" parent="." instance=ExtResource("2_5k035")]
+z_index = -1
+
+[node name="ScientistSpawn" type="Marker2D" parent="."]
+position = Vector2(1536, 624)
+
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Character" parent="YSort" instance=ExtResource("1_fdvn4")]
+position = Vector2(144, 624)
+
+[node name="HUD" parent="." instance=ExtResource("3_x55y2")]
+
+[connection signal="start_game" from="HUD" to="." method="_on_start_game"]
+[connection signal="start_game" from="HUD" to="Background" method="_on_start_game"]
+[connection signal="start_game" from="HUD" to="YSort/Character" method="_on_start_game"]

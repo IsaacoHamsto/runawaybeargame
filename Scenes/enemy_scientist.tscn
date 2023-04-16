@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3m7s8e1hwdqj"]
+[gd_scene load_steps=5 format=3 uid="uid://d0nr88yfnfqjs"]
 
-[ext_resource type="Script" path="res://enemy_scientist.gd" id="1_a6dcs"]
+[ext_resource type="Script" path="res://Scripts/enemy_scientist.gd" id="1_yn6ue"]
 [ext_resource type="Texture2D" uid="uid://cb1fnysj8r2c" path="res://Resources/scientist.png" id="2_1gdid"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60ei0"]
@@ -19,12 +19,17 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-script = ExtResource("1_a6dcs")
+script = ExtResource("1_yn6ue")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, 0)
+position = Vector2(1.00001, -96)
 shape = SubResource("CapsuleShape2D_60ei0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.15, 0.15)
+position = Vector2(0, -96)
+scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_hgii0")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-4, -96)
+scale = Vector2(6.8, 9.6)
