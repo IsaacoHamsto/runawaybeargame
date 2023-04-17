@@ -1,7 +1,11 @@
-extends CharacterBody2D
+extends Area2D
+
+signal hit
 
 var SPEED = 300.0
 var screenSize = Vector2.ZERO
+var INITIAL_POSITION = Vector2(144, 624)
+var LEVEL_EXTENSION = 10
 
 func _ready():
 	screenSize = get_viewport_rect().size
@@ -21,9 +25,9 @@ func _process(delta):
 	if direction.length() > 0:
 		direction = direction.normalized()
 	
-	velocity = Vector2.ONE*direction*SPEED
+	var velocity = Vector2.ONE*direction*SPEED
 	position += velocity*delta
-	position.x = clamp(position.x, 0, 10*screenSize.x)
+	position.x = clamp(position.x, 0, LEVEL_EXTENSION*screenSize.x)
 	position.y = clamp(position.y, 0, screenSize.y)
 	
 	if direction.x != 0:
@@ -31,3 +35,11 @@ func _process(delta):
 
 func _on_start_game():
 	self.show()
+	position = INITIAL_POSITION
+
+
+func _on_body_entered(body):
+	print("Collided with ",body.name)
+	if body.name != "EnemyBody2D":
+		return
+	emit_signal("hit")
