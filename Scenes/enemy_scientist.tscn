@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0nr88yfnfqjs"]
+[gd_scene load_steps=5 format=3 uid="uid://bme7glqhmcf6r"]
 
-[ext_resource type="Script" path="res://Scripts/enemy_scientist.gd" id="1_yn6ue"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_766et"]
 [ext_resource type="Texture2D" uid="uid://cb1fnysj8r2c" path="res://Resources/scientist.png" id="2_1gdid"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60ei0"]
@@ -18,8 +18,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="EnemyBody2D" type="CharacterBody2D"]
-script = ExtResource("1_yn6ue")
+[node name="Scientist" type="CharacterBody2D"]
+script = ExtResource("1_766et")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.00001, -96)
