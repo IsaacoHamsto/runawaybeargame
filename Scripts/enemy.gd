@@ -1,15 +1,16 @@
-extends CharacterBody2D
+extends Area2D
 
 var SPEED = 150.0
 var player
 var RANGE = 100.0
 
-func _process(delta):
+func _ready():
 	player = get_parent().get_node("Character")
-	
+
+func _process(delta):
 	if self.name == "Scientist":
 		RANGE = 450
-		SPEED = 80
+		SPEED = 100
 	if self.name == "WillSmith":
 		RANGE = 100
 		SPEED = 150
@@ -21,5 +22,5 @@ func _process(delta):
 	else:
 		position.x = move_toward(position.x, player.get("position").x-RANGE, SPEED*delta)
 	
-	$AnimatedSprite2D.flip_h = player.get("position").x < position.x
+	$AnimatedSprite2D.flip_h = position.x < player.get("position").x
 	

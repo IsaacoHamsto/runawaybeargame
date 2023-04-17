@@ -1,11 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bme7glqhmcf6r"]
+[gd_scene load_steps=5 format=3 uid="uid://d0nr88yfnfqjs"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_766et"]
 [ext_resource type="Texture2D" uid="uid://cb1fnysj8r2c" path="res://Resources/scientist.png" id="2_1gdid"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60ei0"]
-radius = 40.0
-height = 100.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hgii0"]
 animations = [{
@@ -18,18 +14,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Scientist" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60ei0"]
+radius = 31.0
+height = 80.0
+
+[node name="Scientist" type="Area2D"]
 script = ExtResource("1_766et")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.00001, -96)
-shape = SubResource("CapsuleShape2D_60ei0")
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-1.43051e-06, -96)
+scale = Vector2(6.4, 9.6)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -96)
+position = Vector2(8, -96)
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_hgii0")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(-4, -96)
-scale = Vector2(6.8, 9.6)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -104)
+shape = SubResource("CapsuleShape2D_60ei0")
