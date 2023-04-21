@@ -2,16 +2,21 @@ extends Area2D
 
 signal hit
 
-var SPEED = 300.0
-var screenSize = Vector2.ZERO
-var INITIAL_POSITION = Vector2(144, 624)
-var LEVEL_EXTENSION = 10
+var SPEED:float = 300.0
+var INITIAL_POSITION:Vector2 = Vector2(144, 624)
+var LEVEL_EXTENSION:int = 10
+var MAX_HEALTH := 3
+
+var screenSize:Vector2 = Vector2.ZERO
+var onGameplay:bool = false
+var currentHealth := MAX_HEALTH
 
 func _ready():
 	screenSize = get_viewport_rect().size
-	self.hide()
+	hide()
 
 func _process(delta):
+	if !onGameplay: return
 	var direction := Vector2.ZERO
 	if Input.is_action_pressed("ui_left"):
 		direction+=Vector2.LEFT
@@ -34,12 +39,16 @@ func _process(delta):
 		$AnimatedSprite2D.flip_h = direction.x < 0
 
 func _on_start_game():
-	self.show()
+	onGameplay=true
+	show()
 	position = INITIAL_POSITION
+	$CollisionShape2D.disabled=false
 
-
-func _on_body_entered(body):
-	print("Collided with ",body.name)
-	if body.name != "EnemyBody2D":
+func _on_area_entered(area:Area2D):
+	print("Collided with ",area.name)
+	if area.name != "Scientist" and area.name != "WillSmith":
 		return
+	onGameplay=false
+	hide()
+	$CollisionShape2D.set_deferred("disabled", true)
 	emit_signal("hit")

@@ -30,8 +30,10 @@ func show_message(text):
 func _on_messageTimer_timeout():
 	$MessageLabel.hide()
 
-func show_game_over():
+func _on_game_over():
 	show_message("FIM DE JOGO")
+	await $MessageTimer.timeout
+	$MainMenu.show()
 
 func logo_animate(t):
 	var logoScale:Vector2 = Vector2.ONE

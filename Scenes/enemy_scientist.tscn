@@ -18,7 +18,7 @@ animations = [{
 radius = 31.0
 height = 80.0
 
-[node name="Scientist" type="Area2D"]
+[node name="Scientist" type="Area2D" groups=["enemies"]]
 script = ExtResource("1_766et")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]

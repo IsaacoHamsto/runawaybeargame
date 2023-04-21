@@ -42,7 +42,7 @@ animations = [{
 radius = 32.0
 height = 90.0
 
-[node name="WillSmith" type="Area2D"]
+[node name="WillSmith" type="Area2D" groups=["enemies"]]
 script = ExtResource("1_7i4be")
 metadata/_edit_horizontal_guides_ = []
 
@@ -55,7 +55,7 @@ position = Vector2(0, -128)
 scale = Vector2(0.4375, 0.4375)
 sprite_frames = SubResource("SpriteFrames_urp77")
 animation = &"walk"
-frame_progress = 0.417027
+frame_progress = 0.816171
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.52588e-05, -112)
