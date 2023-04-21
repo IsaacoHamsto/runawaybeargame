@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://c72u8lga501u6"]
 
 [ext_resource type="FontFile" uid="uid://b15ui78hvfg7i" path="res://Resources/Bubbly-Regular.otf" id="1_8puca"]
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_kjf7x"]
@@ -89,6 +89,38 @@ theme_override_font_sizes/font_size = 42
 text = "CONFIGURAcOES
 "
 
+[node name="ConfigMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenuButton" type="Button" parent="ConfigMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -25.0
+offset_right = 80.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ospn5")
+theme_override_font_sizes/font_size = 42
+text = "VOLTAR"
+
 [node name="MessageLabel" type="Label" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -107,5 +139,8 @@ theme_override_font_sizes/font_size = 50
 wait_time = 2.0
 one_shot = true
 
+[connection signal="pressed" from="MainMenu/LeaveButton" to="." method="_on_leaveButton_pressed"]
 [connection signal="pressed" from="MainMenu/PlayButton" to="." method="_on_playButton_pressed"]
+[connection signal="pressed" from="MainMenu/ConfigButton" to="." method="_on_configButton_pressed"]
+[connection signal="pressed" from="ConfigMenu/MainMenuButton" to="." method="_on_mainMenuButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_messageTimer_timeout"]
