@@ -1,17 +1,9 @@
 extends Node2D
 
 func _ready():
-	main_menu()
-
-func _on_game_over():
-	main_menu()
-
-func main_menu():
-	$MainMenuSprite.show()
-	$LabSprite.hide()
+	$LabSprite.show()
 	$ForestSprite.hide()
 
-func _on_start_game():
-	$MainMenuSprite.hide()
-	$LabSprite.show()
+func _on_gameOver():
+	$LabSprite.hide()
 	$ForestSprite.hide()

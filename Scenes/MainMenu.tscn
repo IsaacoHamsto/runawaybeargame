@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmcau8l1uqgu8"]
+
+[ext_resource type="Texture2D" uid="uid://58qj20xfqr6j" path="res://Resources/Runawaybear_logo.png" id="1_0wl2c"]
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_untts"]
+[ext_resource type="PackedScene" uid="uid://sy2rf75g8adl" path="res://Scenes/Main.tscn" id="2_td4yr"]
+[ext_resource type="Theme" uid="uid://os7lai20iikc" path="res://Resources/Fonts/MainTheme.tres" id="4_a3l58"]
+[ext_resource type="PackedScene" uid="uid://dxu5crud0musu" path="res://Scenes/ConfigMenu.tscn" id="5_m6e63"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_untts")
+mainScene = ExtResource("2_td4yr")
+
+[node name="TitleScreen" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="TextureRect" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -216.0
+offset_top = -40.0
+offset_right = 208.0
+offset_bottom = 382.0
+grow_horizontal = 2
+size_flags_vertical = 3
+texture = ExtResource("1_0wl2c")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_top = 340
+theme_override_constants/margin_right = 400
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PlayButton" type="Button" parent="TitleScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../LeaveButton")
+focus_neighbor_bottom = NodePath("../ConfigButton")
+theme = ExtResource("4_a3l58")
+theme_override_font_sizes/font_size = 42
+text = "JOGAR
+"
+
+[node name="ConfigButton" type="Button" parent="TitleScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../LeaveButton")
+theme = ExtResource("4_a3l58")
+theme_override_font_sizes/font_size = 42
+text = "CONFIGURAÇÕES
+"
+
+[node name="LeaveButton" type="Button" parent="TitleScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../ConfigButton")
+focus_neighbor_bottom = NodePath("../PlayButton")
+theme = ExtResource("4_a3l58")
+theme_override_font_sizes/font_size = 42
+text = "SAIR
+"
+
+[node name="ConfigMenu" parent="." instance=ExtResource("5_m6e63")]
+visible = false
+
+[connection signal="pressed" from="TitleScreen/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_playButton_pressed"]
+[connection signal="pressed" from="TitleScreen/MarginContainer/VBoxContainer/ConfigButton" to="." method="_on_configButton_pressed"]
+[connection signal="pressed" from="TitleScreen/MarginContainer/VBoxContainer/LeaveButton" to="." method="_on_leaveButton_pressed"]

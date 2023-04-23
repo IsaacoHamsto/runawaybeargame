@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://cao8gebq4hppf"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_3mrn3"]
+[ext_resource type="Texture2D" uid="uid://cpc15aw8g7ebc" path="res://Resources/BEAR_sprite.png" id="1_j16ud"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6g33a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_j16ud")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rgkh6"]
+radius = 16.0
+height = 56.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ddoau"]
+radius = 16.0
+height = 96.0
+
+[node name="PlayerBody2D" type="CharacterBody2D"]
+collision_layer = 0
+motion_mode = 1
+script = ExtResource("1_3mrn3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, -56)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_6g33a")
+frame_progress = 0.488605
+
+[node name="HurtBoxArea2D" type="Area2D" parent="."]
+
+[node name="HurtBoxShape2D" type="CollisionShape2D" parent="HurtBoxArea2D"]
+position = Vector2(0, -72)
+shape = SubResource("CapsuleShape2D_rgkh6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(4.76837e-07, 4.76837e-07)
+limit_left = 0
+limit_top = 0
+limit_bottom = 648
+
+[node name="BodyShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_ddoau")
+
+[connection signal="area_entered" from="HurtBoxArea2D" to="." method="_on_area_entered"]

@@ -1,8 +1,8 @@
 extends Area2D
 
-var SPEED = 150.0
+var SPEED:float
 var player
-var RANGE = 100.0
+var RANGE:float
 
 func _ready():
 	player = get_parent().get_node("Character")
@@ -10,18 +10,17 @@ func _ready():
 func _process(delta):
 	if self.name == "Scientist":
 		RANGE = 450
-		SPEED = 110
+		SPEED = 105
 	if self.name == "WillSmith":
-		RANGE = 100
-		SPEED = 130
+		RANGE = 120
+		SPEED = 140
 		$AnimatedSprite2D.play("walk")
 	
-	position.y = move_toward(position.y, player.get("position").y, SPEED*delta)
-	
+	position.y = move_toward(position.y, player.get("position").y, SPEED*.7*delta)
 	if player.get("position").x < position.x:
 		position.x = move_toward(position.x, player.get("position").x+RANGE, SPEED*delta)
 	else:
-		position.x = move_toward(position.x, player.get("position").x-RANGE, SPEED*0.8*delta)
+		position.x = move_toward(position.x, player.get("position").x-RANGE, SPEED*delta)
 	
 	$AnimatedSprite2D.flip_h = position.x < player.get("position").x
 	

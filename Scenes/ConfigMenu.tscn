@@ -1,0 +1,115 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxu5crud0musu"]
+
+[ext_resource type="Theme" uid="uid://os7lai20iikc" path="res://Resources/Fonts/MainTheme.tres" id="1_hjk80"]
+[ext_resource type="Script" path="res://Scripts/ConfigMenu.gd" id="2_ahqlo"]
+
+[node name="Popup" type="Popup"]
+size = Vector2i(500, 300)
+borderless = false
+theme = ExtResource("1_hjk80")
+script = ExtResource("2_ahqlo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.341176, 0.376471, 0.509804)
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Video" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Video"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Video/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 200
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="DisplayLabel" type="Label" parent="TabContainer/Video/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "modo de display"
+
+[node name="DisplayOption" type="OptionButton" parent="TabContainer/Video/MarginContainer/GridContainer"]
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "  Janela"
+popup/item_0/id = 0
+popup/item_1/text = "  Tela cheia "
+popup/item_1/id = 1
+
+[node name="Audio" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Audio/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="MasterVolumeLabel" type="Label" parent="TabContainer/Audio/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Volume principal"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+min_value = -72.0
+max_value = 6.0
+step = 0.0
+
+[node name="MusicVolumeLabel" type="Label" parent="TabContainer/Audio/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "música"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/GridContainer"]
+layout_mode = 2
+min_value = -72.0
+max_value = 6.0
+step = 0.0
+
+[node name="SFXVolumeLabel" type="Label" parent="TabContainer/Audio/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "efeitos sonoros"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/GridContainer"]
+layout_mode = 2
+min_value = -72.0
+max_value = 6.0
+step = 0.0
+
+[connection signal="item_selected" from="TabContainer/Video/MarginContainer/GridContainer/DisplayOption" to="." method="_on_displayOption_item_selected"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/GridContainer/MasterVolumeSlider" to="." method="_on_masterSlider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/GridContainer/MusicVolumeSlider" to="." method="_on_musicSlider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/GridContainer/SFXVolumeSlider" to="." method="_on_sfxSlider_value_changed"]
