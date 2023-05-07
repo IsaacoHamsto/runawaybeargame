@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmcau8l1uqgu8"]
+[gd_scene load_steps=6 format=3 uid="uid://dw31ngem41o6e"]
 
 [ext_resource type="Texture2D" uid="uid://58qj20xfqr6j" path="res://Resources/Runawaybear_logo.png" id="1_0wl2c"]
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_untts"]
-[ext_resource type="PackedScene" uid="uid://sy2rf75g8adl" path="res://Scenes/Main.tscn" id="2_td4yr"]
+[ext_resource type="PackedScene" path="res://Scenes/Main.tscn" id="2_td4yr"]
 [ext_resource type="Theme" uid="uid://os7lai20iikc" path="res://Resources/Fonts/MainTheme.tres" id="4_a3l58"]
-[ext_resource type="PackedScene" uid="uid://dxu5crud0musu" path="res://Scenes/ConfigMenu.tscn" id="5_m6e63"]
+[ext_resource type="PackedScene" uid="uid://dxu5crud0musu" path="res://Scenes/UI/ConfigMenu.tscn" id="5_8pea5"]
 
 [node name="MainMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,7 +84,7 @@ theme_override_font_sizes/font_size = 42
 text = "SAIR
 "
 
-[node name="ConfigMenu" parent="." instance=ExtResource("5_m6e63")]
+[node name="ConfigMenu" parent="." instance=ExtResource("5_8pea5")]
 visible = false
 
 [connection signal="pressed" from="TitleScreen/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_playButton_pressed"]

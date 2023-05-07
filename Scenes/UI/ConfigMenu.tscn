@@ -4,7 +4,8 @@
 [ext_resource type="Script" path="res://Scripts/ConfigMenu.gd" id="2_ahqlo"]
 
 [node name="Popup" type="Popup"]
-size = Vector2i(500, 300)
+size = Vector2i(513, 300)
+visible = true
 borderless = false
 theme = ExtResource("1_hjk80")
 script = ExtResource("2_ahqlo")
@@ -28,9 +29,10 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Video"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -213.0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -60,12 +62,9 @@ visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Audio"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_right = 499.0
+offset_bottom = 123.0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20

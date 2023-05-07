@@ -2,6 +2,7 @@ extends Node
 
 @export var scientistScene:PackedScene
 @export var willsmithScene:PackedScene
+@export var mainMenu:PackedScene
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
@@ -14,6 +15,7 @@ func spawn_enemy(spawnLocation: Vector2, enemyScene: PackedScene):
 	enemyNode.position = spawnLocation
 
 func _on_gameOver():
-	get_tree().call_group("enemies", "queue_free")
+	#get_tree().call_group("enemies", "queue_free")
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 

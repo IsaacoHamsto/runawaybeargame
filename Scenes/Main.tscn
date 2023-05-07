@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://sy2rf75g8adl"]
+[gd_scene load_steps=7 format=3 uid="uid://dfgdeme431413"]
 
 [ext_resource type="PackedScene" uid="uid://cao8gebq4hppf" path="res://Scenes/Characters/Player.tscn" id="1_fdvn4"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_t7kew"]
 [ext_resource type="PackedScene" uid="uid://d0nr88yfnfqjs" path="res://Scenes/Characters/enemy_scientist.tscn" id="2_0t3c0"]
 [ext_resource type="PackedScene" uid="uid://4g6urjtk418" path="res://Scenes/Background.tscn" id="2_5k035"]
 [ext_resource type="PackedScene" uid="uid://b32bpbupcr7vr" path="res://Scenes/Characters/enemy_willsmith.tscn" id="3_2a8be"]
-[ext_resource type="PackedScene" uid="uid://c72u8lga501u6" path="res://Scenes/HUD.tscn" id="3_x55y2"]
+[ext_resource type="PackedScene" uid="uid://c72u8lga501u6" path="res://Scenes/UI/HUD.tscn" id="6_rmka6"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_t7kew")
@@ -24,7 +24,7 @@ y_sort_enabled = true
 [node name="Character" parent="YSort" instance=ExtResource("1_fdvn4")]
 position = Vector2(144, 624)
 
-[node name="HUD" parent="." instance=ExtResource("3_x55y2")]
+[node name="HUD" parent="." instance=ExtResource("6_rmka6")]
 
 [connection signal="game_over" from="YSort/Character" to="." method="_on_gameOver"]
 [connection signal="game_over" from="YSort/Character" to="Background" method="_on_gameOver"]

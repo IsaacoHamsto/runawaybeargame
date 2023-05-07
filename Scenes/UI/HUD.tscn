@@ -1,14 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c72u8lga501u6"]
+[gd_scene load_steps=6 format=3 uid="uid://c72u8lga501u6"]
 
-[ext_resource type="FontFile" uid="uid://b15ui78hvfg7i" path="res://Resources/Bubbly-Regular.otf" id="1_8puca"]
-[ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_kjf7x"]
+[ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_s0wbu"]
+[ext_resource type="FontFile" uid="uid://b15ui78hvfg7i" path="res://Resources/Bubbly-Regular.otf" id="2_jnmvm"]
+[ext_resource type="PackedScene" uid="uid://bhlimsgsx376r" path="res://Scenes/UI/PauseMenu.tscn" id="3_cct4x"]
+[ext_resource type="PackedScene" uid="uid://cco8stx16555c" path="res://Scenes/UI/GameOverMenu.tscn" id="4_1rkex"]
 
 [sub_resource type="Theme" id="Theme_jgnuq"]
-default_font = ExtResource("1_8puca")
+default_font = ExtResource("2_jnmvm")
 default_font_size = 0
 
 [node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_kjf7x")
+script = ExtResource("1_s0wbu")
 
 [node name="MessageLabel" type="Label" parent="."]
 visible = false
@@ -37,4 +39,12 @@ theme = SubResource("Theme_jgnuq")
 theme_override_font_sizes/font_size = 68
 text = "VIDAS:"
 
+[node name="PauseMenu" parent="." instance=ExtResource("3_cct4x")]
+visible = false
+
+[node name="GameOverMenu" parent="." instance=ExtResource("4_1rkex")]
+process_mode = 3
+visible = false
+
+[connection signal="gameOver" from="." to="GameOverMenu" method="on_gameOver"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_messageTimer_timeout"]

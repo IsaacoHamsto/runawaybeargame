@@ -5,5 +5,6 @@ func _ready():
 	$ForestSprite.hide()
 
 func _on_gameOver():
-	$LabSprite.hide()
-	$ForestSprite.hide()
+	#$LabSprite.hide()
+	#$ForestSprite.hide()
+	pass
