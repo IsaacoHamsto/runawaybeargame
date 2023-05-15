@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://58qj20xfqr6j" path="res://Resources/Runawaybear_logo.png" id="1_0wl2c"]
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_untts"]
-[ext_resource type="PackedScene" path="res://Scenes/Main.tscn" id="2_td4yr"]
+[ext_resource type="PackedScene" uid="uid://dfgdeme431413" path="res://Scenes/Main.tscn" id="2_td4yr"]
 [ext_resource type="Theme" uid="uid://os7lai20iikc" path="res://Resources/Fonts/MainTheme.tres" id="4_a3l58"]
 [ext_resource type="PackedScene" uid="uid://dxu5crud0musu" path="res://Scenes/UI/ConfigMenu.tscn" id="5_8pea5"]
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c72u8lga501u6"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_s0wbu"]
 [ext_resource type="FontFile" uid="uid://b15ui78hvfg7i" path="res://Resources/Bubbly-Regular.otf" id="2_jnmvm"]
-[ext_resource type="PackedScene" uid="uid://bhlimsgsx376r" path="res://Scenes/UI/PauseMenu.tscn" id="3_cct4x"]
+[ext_resource type="PackedScene" path="res://Scripts/PauseMenu.tscn" id="3_cct4x"]
 [ext_resource type="PackedScene" uid="uid://cco8stx16555c" path="res://Scenes/UI/GameOverMenu.tscn" id="4_1rkex"]
+[ext_resource type="Texture2D" uid="uid://c4fdcvangtdlm" path="res://Resources/heart.png" id="5_udkxx"]
 
 [sub_resource type="Theme" id="Theme_jgnuq"]
 default_font = ExtResource("2_jnmvm")
@@ -45,6 +46,33 @@ visible = false
 [node name="GameOverMenu" parent="." instance=ExtResource("4_1rkex")]
 process_mode = 3
 visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 300.0
+offset_bottom = 100.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_udkxx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_udkxx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_udkxx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer"]
 
 [connection signal="gameOver" from="." to="GameOverMenu" method="on_gameOver"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_messageTimer_timeout"]
