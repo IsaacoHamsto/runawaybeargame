@@ -1,35 +1,216 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0nr88yfnfqjs"]
+[gd_scene load_steps=18 format=3 uid="uid://d0nr88yfnfqjs"]
 
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_766et"]
-[ext_resource type="Texture2D" uid="uid://cb1fnysj8r2c" path="res://Resources/scientist.png" id="2_1gdid"]
+[ext_resource type="Script" path="res://Scripts/Scientist.gd" id="1_ajgto"]
+[ext_resource type="Texture2D" uid="uid://c2s0yw2sdbodf" path="res://Resources/Scientist/spritesheet (1).png" id="2_atc0h"]
+[ext_resource type="Shader" path="res://Resources/Flash.gdshader" id="2_y0qdt"]
+[ext_resource type="Script" path="res://Scripts/HurtBox.gd" id="3_weamc"]
+[ext_resource type="Texture2D" uid="uid://chy7gq8m1wfqy" path="res://Resources/ice_particle_white.png" id="4_16wy0"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_hgii0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_1gdid")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tx2ce"]
+shader = ExtResource("2_y0qdt")
+shader_parameter/color_rgb = Vector3(0, 0, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ijube"]
+radius = 47.0
+height = 128.0
+
+[sub_resource type="Curve" id="Curve_3famx"]
+_data = [Vector2(0, 0.245455), 0.0, 0.0, 0, 0, Vector2(0.308057, 0.754545), 0.0581267, 0.0581267, 0, 0, Vector2(1, 0.118182), -0.670208, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dskfy"]
+curve = SubResource("Curve_3famx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_faq20"]
+lifetime_randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 16.0
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 600.0
+initial_velocity_max = 600.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = -255.0
+linear_accel_max = -245.0
+damping_min = 45.0
+damping_max = 55.0
+scale_curve = SubResource("CurveTexture_dskfy")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eotxa"]
+radius = 16.0
+height = 96.0
+
+[sub_resource type="Animation" id="Animation_yci34"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/color_rgb")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3l74f"]
+resource_name = "attack"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot"
 }]
+}
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60ei0"]
-radius = 31.0
-height = 80.0
+[sub_resource type="Animation" id="Animation_jihj6"]
+resource_name = "hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/color_rgb")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0), Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-[node name="Scientist" type="Area2D" groups=["enemies"]]
-script = ExtResource("1_766et")
+[sub_resource type="Animation" id="Animation_2iim2"]
+resource_name = "walk"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6mjrd"]
+_data = {
+"RESET": SubResource("Animation_yci34"),
+"attack": SubResource("Animation_3l74f"),
+"hit": SubResource("Animation_jihj6"),
+"walk": SubResource("Animation_2iim2")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r2fpu"]
+radius = 8.0
+height = 768.0
+
+[node name="Scientist" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+script = ExtResource("1_ajgto")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(-1.43051e-06, -96)
-scale = Vector2(6.4, 9.6)
+position = Vector2(-1.43051e-06, -84)
+scale = Vector2(11.6, 8.4)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(8, -96)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tx2ce")
+position = Vector2(1, -115)
 scale = Vector2(0.12, 0.12)
-sprite_frames = SubResource("SpriteFrames_hgii0")
+texture = ExtResource("2_atc0h")
+hframes = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -104)
-shape = SubResource("CapsuleShape2D_60ei0")
+[node name="HurtboxArea2D" type="Area2D" parent="Sprite2D"]
+position = Vector2(-8.33335, 958.333)
+scale = Vector2(8.33333, 8.33333)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_weamc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HurtboxArea2D"]
+position = Vector2(0, -96)
+shape = SubResource("CapsuleShape2D_ijube")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
+position = Vector2(-8.33333, 958.333)
+scale = Vector2(8.33333, 8.33333)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_faq20")
+texture = ExtResource("4_16wy0")
+lifetime = 0.4
+one_shot = true
+preprocess = 0.03
+explosiveness = 0.8
+randomness = 0.59
+
+[node name="BodyShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_eotxa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_6mjrd")
+}
+
+[node name="RangeArea" type="Area2D" parent="."]
+position = Vector2(0, -120)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea"]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_r2fpu")
+
+[connection signal="enemy_death" from="." to="." method="_on_enemy_death"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://16m7s8rd22ie"
-path="res://.godot/imported/walk2_.png-cea6e8a2f74066f5b465502a18d8d159.ctex"
+uid="uid://dt40ospm2nskr"
+path="res://.godot/imported/attack-removebg-preview.png-bdf3d36a3588aa0f0c1d801b69968a1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/WillSmith/walk2_.png"
-dest_files=["res://.godot/imported/walk2_.png-cea6e8a2f74066f5b465502a18d8d159.ctex"]
+source_file="res://Resources/BEAR/attack-removebg-preview.png"
+dest_files=["res://.godot/imported/attack-removebg-preview.png-bdf3d36a3588aa0f0c1d801b69968a1d.ctex"]
 
 [params]
 

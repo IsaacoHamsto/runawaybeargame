@@ -4,10 +4,13 @@ extends Node
 @export var willsmithScene:PackedScene
 @export var mainMenu:PackedScene
 
+@onready var music = get_node("Music")
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	spawn_enemy($ScientistSpawn.position, willsmithScene)
 	spawn_enemy(Vector2(1500, 700), scientistScene)
+	music.stream.loop_mode=1
 
 func spawn_enemy(spawnLocation: Vector2, enemyScene: PackedScene):
 	var enemyNode = enemyScene.instantiate()

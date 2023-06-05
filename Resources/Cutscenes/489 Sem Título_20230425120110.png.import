@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qgm341cmi32f"
-path="res://.godot/imported/icon.svg-7a4b8200a9399982c2078883e14f22e5.ctex"
+uid="uid://dg50wd3w03lyc"
+path="res://.godot/imported/489 Sem Título_20230425120110.png-0f818def100bde13e6f91d3ea19e75ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-7a4b8200a9399982c2078883e14f22e5.ctex"]
+source_file="res://Resources/Cutscenes/489 Sem Título_20230425120110.png"
+dest_files=["res://.godot/imported/489 Sem Título_20230425120110.png-0f818def100bde13e6f91d3ea19e75ce.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

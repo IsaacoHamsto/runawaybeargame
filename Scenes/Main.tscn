@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfgdeme431413"]
+[gd_scene load_steps=8 format=3 uid="uid://dfgdeme431413"]
 
 [ext_resource type="PackedScene" uid="uid://cao8gebq4hppf" path="res://Scenes/Characters/Player.tscn" id="1_fdvn4"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_t7kew"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://4g6urjtk418" path="res://Scenes/Background.tscn" id="2_5k035"]
 [ext_resource type="PackedScene" uid="uid://b32bpbupcr7vr" path="res://Scenes/Characters/enemy_willsmith.tscn" id="3_2a8be"]
 [ext_resource type="PackedScene" uid="uid://c72u8lga501u6" path="res://Scenes/UI/HUD.tscn" id="6_rmka6"]
+[ext_resource type="AudioStream" uid="uid://d4jduxi2a2g47" path="res://Resources/Lvl3-BossFight.wav" id="7_dfrs7"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_t7kew")
@@ -25,6 +26,12 @@ y_sort_enabled = true
 position = Vector2(144, 624)
 
 [node name="HUD" parent="." instance=ExtResource("6_rmka6")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("7_dfrs7")
+volume_db = -2.0
+autoplay = true
 
 [connection signal="game_over" from="YSort/Character" to="." method="_on_gameOver"]
 [connection signal="game_over" from="YSort/Character" to="Background" method="_on_gameOver"]

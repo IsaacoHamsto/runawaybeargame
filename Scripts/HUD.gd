@@ -28,8 +28,7 @@ func _on_gameOver():
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_pause"):
 		$PauseMenu.pause()
-		print("ui_pause")
 	
 
 func _process(delta):
-	show_health(player.currentHealth)
+	show_health(player.health)

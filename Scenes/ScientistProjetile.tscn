@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://h41oj0nkkqxp"]
+
+[ext_resource type="Script" path="res://Scripts/ScientistProjetile.gd" id="1_h6b7l"]
+[ext_resource type="Texture2D" uid="uid://dtvjgetcty71c" path="res://Resources/Scientist/projectile.png" id="1_wi6b7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g3xxo"]
+radius = 24.0
+
+[sub_resource type="Animation" id="Animation_8foo3"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_aj4bq"]
+resource_name = "rotate"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 6.28319, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y02fj"]
+_data = {
+"RESET": SubResource("Animation_8foo3"),
+"rotate": SubResource("Animation_aj4bq")
+}
+
+[node name="ScientistProjetile" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_h6b7l")
+damage = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_wi6b7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g3xxo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "rotate"
+libraries = {
+"": SubResource("AnimationLibrary_y02fj")
+}
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(3.2, 3.2)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

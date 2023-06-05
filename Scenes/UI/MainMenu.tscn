@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://58qj20xfqr6j" path="res://Resources/Runawaybear_logo.png" id="1_0wl2c"]
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_untts"]
-[ext_resource type="PackedScene" path="res://Scenes/Main.tscn" id="2_td4yr"]
 [ext_resource type="Theme" uid="uid://os7lai20iikc" path="res://Resources/Fonts/MainTheme.tres" id="4_a3l58"]
 [ext_resource type="PackedScene" uid="uid://dxu5crud0musu" path="res://Scenes/UI/ConfigMenu.tscn" id="5_8pea5"]
+[ext_resource type="AudioStream" uid="uid://bacbmnr2loc2r" path="res://Resources/Lvl3-City.wav" id="5_s4kgc"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -15,7 +15,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_untts")
-mainScene = ExtResource("2_td4yr")
 
 [node name="TitleScreen" type="Control" parent="."]
 layout_mode = 1
@@ -86,6 +85,10 @@ text = "SAIR
 
 [node name="ConfigMenu" parent="." instance=ExtResource("5_8pea5")]
 visible = false
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_s4kgc")
+autoplay = true
 
 [connection signal="pressed" from="TitleScreen/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_playButton_pressed"]
 [connection signal="pressed" from="TitleScreen/MarginContainer/VBoxContainer/ConfigButton" to="." method="_on_configButton_pressed"]
