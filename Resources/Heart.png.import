@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drdk107ycx15c"
-path="res://.godot/imported/Idle-removebg-preview.png-3459293704e2d92b12780538ca09f91d.ctex"
+uid="uid://b3uh1kf2cxy2i"
+path="res://.godot/imported/Heart.png-e6312e2156437515aec6e3965d20c45a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/BEAR/Idle-removebg-preview.png"
-dest_files=["res://.godot/imported/Idle-removebg-preview.png-3459293704e2d92b12780538ca09f91d.ctex"]
+source_file="res://Resources/Heart.png"
+dest_files=["res://.godot/imported/Heart.png-e6312e2156437515aec6e3965d20c45a.ctex"]
 
 [params]
 

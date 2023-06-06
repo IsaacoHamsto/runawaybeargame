@@ -7,7 +7,7 @@ var INITIAL_POSITION:Vector2 = Vector2(144, 624)
 var LEVEL_EXTENSION:int = 10
 var MAX_HEALTH := 3
 
-@onready var SCALE=$AnimatedSprite2D.scale.x
+@onready var SCALE=$Sprite2D.scale.x
 @onready var animation = $AnimationPlayer
 @onready var screenSize:Vector2 = get_viewport_rect().size
 var onGameplay:bool = false
@@ -16,7 +16,7 @@ var health := MAX_HEALTH
 func _ready():
 	onGameplay=true
 	position = INITIAL_POSITION
-	$AnimatedSprite2D/HurtboxArea2D/HurtBoxShape2D.set_deferred("disabled", false)
+	$Sprite2D/HurtboxArea2D/HurtBoxShape2D.set_deferred("disabled", false)
 	health = MAX_HEALTH
 
 func _physics_process(delta):
@@ -45,12 +45,13 @@ func _physics_process(delta):
 	position.y = clamp(position.y, 0, screenSize.y)
 	
 	if direction.x != 0:
-		$AnimatedSprite2D.scale.x = -SCALE if direction.x < 0 else SCALE
+		$Sprite2D.scale.x = -SCALE if direction.x < 0 else SCALE
+		$AnimationPlayer.play("walk")
 
 func death():
 	onGameplay=false
 	hide()
-	$AnimatedSprite2D/HurtboxArea2D/HurtBoxShape2D.set_deferred("disabled", true)
+	$Sprite2D/HurtboxArea2D/HurtBoxShape2D.set_deferred("disabled", true)
 	emit_signal("game_over")
 
 func attack():

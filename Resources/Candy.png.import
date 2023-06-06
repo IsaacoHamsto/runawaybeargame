@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt40ospm2nskr"
-path="res://.godot/imported/attack-removebg-preview.png-bdf3d36a3588aa0f0c1d801b69968a1d.ctex"
+uid="uid://bhf3jg0rpnt5d"
+path="res://.godot/imported/Candy.png-f44adefa1eb60b32d5abfc21315f61c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/BEAR/attack-removebg-preview.png"
-dest_files=["res://.godot/imported/attack-removebg-preview.png-bdf3d36a3588aa0f0c1d801b69968a1d.ctex"]
+source_file="res://Resources/Candy.png"
+dest_files=["res://.godot/imported/Candy.png-f44adefa1eb60b32d5abfc21315f61c3.ctex"]
 
 [params]
 

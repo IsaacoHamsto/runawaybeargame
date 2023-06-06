@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://os7lai20iikc"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://os7lai20iikc"]
 
 [ext_resource type="FontFile" uid="uid://bwvn0y6qlg2wq" path="res://Resources/Fonts/The Most Beautiful Gift Three Font by 7NTypes.otf" id="1_ng5t7"]
 
@@ -46,6 +46,23 @@ corner_detail = 2
 shadow_color = Color(0.278431, 0.34902, 0.501961, 0.6)
 shadow_size = 2
 shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7uwr"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.0117647, 0.117647, 0.129412, 0.85098)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 0.862745)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fq3jj"]
 bg_color = Color(0, 0.341176, 0.376471, 0.913725)
@@ -102,6 +119,7 @@ Button/styles/focus = SubResource("StyleBoxFlat_j3114")
 Button/styles/hover = SubResource("StyleBoxFlat_unasq")
 Button/styles/normal = SubResource("StyleBoxFlat_8hr8k")
 Button/styles/pressed = SubResource("StyleBoxFlat_0eoy8")
+Panel/styles/panel = SubResource("StyleBoxFlat_o7uwr")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_fq3jj")
 TabBar/styles/tab_selected = SubResource("StyleBoxFlat_xkr5o")
 TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_rfgvf")

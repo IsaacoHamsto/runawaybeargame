@@ -4,6 +4,9 @@ signal gameOver
 
 var time:float = 0
 var player
+@onready var healthContainer = get_node("HealthPanel/MarginContainer/HBoxContainer")
+
+@export var test:int=3
 
 func _ready():
 	player = get_parent().get_node("YSort/Character")
@@ -16,8 +19,10 @@ func show_message(text):
 	$MessageLabel.hide()
 
 func show_health(health:int):
-	$HealthLabel.show()
-	$HealthLabel.text = str("VIDA:", health)
+	for i in healthContainer.get_children():
+		i.hide()
+	for i in range(health):
+		healthContainer.get_child(i).show()
 
 func _on_gameOver():
 	$HealthLabel.hide()

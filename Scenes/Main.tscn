@@ -17,7 +17,10 @@ willsmithScene = ExtResource("3_2a8be")
 z_index = -1
 
 [node name="ScientistSpawn" type="Marker2D" parent="."]
-position = Vector2(1536, 624)
+position = Vector2(1808, 540)
+
+[node name="AgentSpawn1" type="Marker2D" parent="."]
+position = Vector2(1282, 537)
 
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true

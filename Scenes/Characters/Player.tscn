@@ -1,30 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cao8gebq4hppf"]
+[gd_scene load_steps=13 format=3 uid="uid://cao8gebq4hppf"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_3mrn3"]
-[ext_resource type="Texture2D" uid="uid://cpc15aw8g7ebc" path="res://Resources/BEAR_sprite.png" id="1_j16ud"]
+[ext_resource type="Texture2D" uid="uid://wwkx74k6rogv" path="res://Resources/BEAR/bear_spritesheet.png" id="2_gassm"]
 [ext_resource type="Script" path="res://Scripts/HitBox.gd" id="3_of08f"]
 [ext_resource type="Script" path="res://Scripts/HurtBox.gd" id="4_tfncd"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6g33a"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"attack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_j16ud")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
-}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7645u"]
 radius = 16.0
@@ -43,7 +22,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D/HitboxArea2D/CollisionShape2D:disabled")
+tracks/0/path = NodePath("Sprite2D/HitboxArea2D/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -55,7 +34,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D/HitboxArea2D/CollisionShape2D/Polygon2D:visible")
+tracks/1/path = NodePath("Sprite2D/HitboxArea2D/CollisionShape2D/Polygon2D:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -64,13 +43,25 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_2js2a"]
 resource_name = "attack"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D/HitboxArea2D/CollisionShape2D:disabled")
+tracks/0/path = NodePath("Sprite2D/HitboxArea2D/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -82,7 +73,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D/HitboxArea2D/CollisionShape2D/Polygon2D:visible")
+tracks/1/path = NodePath("Sprite2D/HitboxArea2D/CollisionShape2D/Polygon2D:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -92,10 +83,44 @@ tracks/1/keys = {
 "values": [false, true, false]
 }
 
+[sub_resource type="Animation" id="Animation_sn8ii"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_stdmb"]
+resource_name = "walk"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 0, 3, 0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jt7cj"]
 _data = {
 "RESET": SubResource("Animation_sfv5s"),
-"attack": SubResource("Animation_2js2a")
+"attack": SubResource("Animation_2js2a"),
+"idle": SubResource("Animation_sn8ii"),
+"walk": SubResource("Animation_stdmb")
 }
 
 [node name="PlayerBody2D" type="CharacterBody2D"]
@@ -103,37 +128,37 @@ collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_3mrn3")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(4, -56)
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_6g33a")
-animation = &"idle"
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, -64)
+texture = ExtResource("2_gassm")
+hframes = 7
 
-[node name="HitboxArea2D" type="Area2D" parent="AnimatedSprite2D" groups=["hitbox"]]
-position = Vector2(-40, 560)
-scale = Vector2(10, 10)
+[node name="HitboxArea2D" type="Area2D" parent="Sprite2D" groups=["hitbox"]]
+position = Vector2(-4, 64)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("3_of08f")
 damage = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitboxArea2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitboxArea2D"]
 position = Vector2(72, -80)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_7645u")
 disabled = true
 
-[node name="Polygon2D" type="Polygon2D" parent="AnimatedSprite2D/HitboxArea2D/CollisionShape2D"]
+[node name="Polygon2D" type="Polygon2D" parent="Sprite2D/HitboxArea2D/CollisionShape2D"]
 visible = false
 color = Color(0.282353, 0.662745, 1, 1)
 polygon = PackedVector2Array(16, -32, 0, -48, -16, -32, -16, 32, -7.62939e-06, 48, 16, 32)
 
-[node name="HurtboxArea2D" type="Area2D" parent="AnimatedSprite2D"]
+[node name="HurtboxArea2D" type="Area2D" parent="Sprite2D"]
+position = Vector2(0, 8)
+scale = Vector2(0.1, 0.1)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("4_tfncd")
 
-[node name="HurtBoxShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HurtboxArea2D"]
+[node name="HurtBoxShape2D" type="CollisionShape2D" parent="Sprite2D/HurtboxArea2D"]
 position = Vector2(-40, -240)
 scale = Vector2(10, 10)
 shape = SubResource("CapsuleShape2D_rgkh6")
@@ -153,3 +178,5 @@ shape = SubResource("CapsuleShape2D_ddoau")
 libraries = {
 "": SubResource("AnimationLibrary_jt7cj")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

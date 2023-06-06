@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c72u8lga501u6"]
+[gd_scene load_steps=8 format=3 uid="uid://c72u8lga501u6"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_s0wbu"]
 [ext_resource type="FontFile" uid="uid://b15ui78hvfg7i" path="res://Resources/Bubbly-Regular.otf" id="2_jnmvm"]
 [ext_resource type="PackedScene" uid="uid://bhlimsgsx376r" path="res://Scenes/UI/PauseMenu.tscn" id="3_cct4x"]
 [ext_resource type="PackedScene" uid="uid://cco8stx16555c" path="res://Scenes/UI/GameOverMenu.tscn" id="4_1rkex"]
+[ext_resource type="Theme" uid="uid://os7lai20iikc" path="res://Resources/Fonts/MainTheme.tres" id="5_6jovv"]
+[ext_resource type="Texture2D" uid="uid://b3uh1kf2cxy2i" path="res://Resources/Heart.png" id="5_hjcgu"]
 
 [sub_resource type="Theme" id="Theme_jgnuq"]
 default_font = ExtResource("2_jnmvm")
@@ -33,8 +35,10 @@ one_shot = true
 
 [node name="HealthLabel" type="Label" parent="."]
 visible = false
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 69.0
+offset_top = 69.0
+offset_right = 251.0
+offset_bottom = 140.0
 theme = SubResource("Theme_jgnuq")
 theme_override_font_sizes/font_size = 68
 text = "VIDAS:"
@@ -45,6 +49,49 @@ visible = false
 [node name="GameOverMenu" parent="." instance=ExtResource("4_1rkex")]
 process_mode = 3
 visible = false
+
+[node name="HealthPanel" type="Panel" parent="."]
+offset_left = 64.0
+offset_top = 48.0
+offset_right = 256.0
+offset_bottom = 112.0
+theme = ExtResource("5_6jovv")
+
+[node name="MarginContainer" type="MarginContainer" parent="HealthPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HealthPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Heart1" type="TextureRect" parent="HealthPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = ExtResource("5_hjcgu")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Heart2" type="TextureRect" parent="HealthPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = ExtResource("5_hjcgu")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Heart3" type="TextureRect" parent="HealthPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = ExtResource("5_hjcgu")
+expand_mode = 2
+stretch_mode = 4
 
 [connection signal="gameOver" from="." to="GameOverMenu" method="on_gameOver"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_messageTimer_timeout"]
