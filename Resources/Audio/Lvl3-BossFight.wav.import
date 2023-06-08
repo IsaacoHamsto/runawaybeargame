@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d4jduxi2a2g47"
-path="res://.godot/imported/Lvl3-BossFight.wav-b95c00e8ed2c68ec7c197e9163bb79f0.sample"
+path="res://.godot/imported/Lvl3-BossFight.wav-52f594d8bc5ee075a4368ebe6102bbac.sample"
 
 [deps]
 
-source_file="res://Resources/Lvl3-BossFight.wav"
-dest_files=["res://.godot/imported/Lvl3-BossFight.wav-b95c00e8ed2c68ec7c197e9163bb79f0.sample"]
+source_file="res://Resources/Audio/Lvl3-BossFight.wav"
+dest_files=["res://.godot/imported/Lvl3-BossFight.wav-52f594d8bc5ee075a4368ebe6102bbac.sample"]
 
 [params]
 

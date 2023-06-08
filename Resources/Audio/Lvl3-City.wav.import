@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bacbmnr2loc2r"
-path="res://.godot/imported/Lvl3-City.wav-1074c0ec55e8d10f6ca6e99af6684062.sample"
+path="res://.godot/imported/Lvl3-City.wav-e81a86e6ed19e7324d3a9ea78d148dc8.sample"
 
 [deps]
 
-source_file="res://Resources/Lvl3-City.wav"
-dest_files=["res://.godot/imported/Lvl3-City.wav-1074c0ec55e8d10f6ca6e99af6684062.sample"]
+source_file="res://Resources/Audio/Lvl3-City.wav"
+dest_files=["res://.godot/imported/Lvl3-City.wav-e81a86e6ed19e7324d3a9ea78d148dc8.sample"]
 
 [params]
 

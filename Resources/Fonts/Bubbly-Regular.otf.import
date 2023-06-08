@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b15ui78hvfg7i"
-path="res://.godot/imported/Bubbly-Regular.otf-ac113fed3d48f18a7243f3f9555d75bc.fontdata"
+uid="uid://bd8qpl63jlupj"
+path="res://.godot/imported/Bubbly-Regular.otf-e25ea78081ca36231a382ea6533c52c6.fontdata"
 
 [deps]
 
-source_file="res://Resources/Bubbly-Regular.otf"
-dest_files=["res://.godot/imported/Bubbly-Regular.otf-ac113fed3d48f18a7243f3f9555d75bc.fontdata"]
+source_file="res://Resources/Fonts/Bubbly-Regular.otf"
+dest_files=["res://.godot/imported/Bubbly-Regular.otf-e25ea78081ca36231a382ea6533c52c6.fontdata"]
 
 [params]
 

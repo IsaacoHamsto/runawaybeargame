@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb1fnysj8r2c"
-path="res://.godot/imported/scientist.png-f0fe7bcf08941cb33b2f36a377228d12.ctex"
+uid="uid://dy6dgdke1b8ai"
+path="res://.godot/imported/City1.jpg-d1361283e6888519e716c32af3dd4b12.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/scientist.png"
-dest_files=["res://.godot/imported/scientist.png-f0fe7bcf08941cb33b2f36a377228d12.ctex"]
+source_file="res://Resources/Background/City/City1.jpg"
+dest_files=["res://.godot/imported/City1.jpg-d1361283e6888519e716c32af3dd4b12.ctex"]
 
 [params]
 
