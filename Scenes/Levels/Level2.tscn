@@ -1,0 +1,88 @@
+[gd_scene load_steps=11 format=3 uid="uid://c0oylk3nhdyfm"]
+
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_x8vdk"]
+[ext_resource type="PackedScene" uid="uid://d0nr88yfnfqjs" path="res://Scenes/Characters/enemy_scientist.tscn" id="2_5gkum"]
+[ext_resource type="PackedScene" uid="uid://b32bpbupcr7vr" path="res://Scenes/Characters/enemy_willsmith.tscn" id="3_nqjc6"]
+[ext_resource type="PackedScene" uid="uid://4g6urjtk418" path="res://Scenes/Background.tscn" id="4_4xsb1"]
+[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="5_y6bu0"]
+[ext_resource type="PackedScene" uid="uid://cao8gebq4hppf" path="res://Scenes/Characters/Player.tscn" id="6_3nu5u"]
+[ext_resource type="PackedScene" uid="uid://c72u8lga501u6" path="res://Scenes/UI/HUD.tscn" id="7_bndha"]
+[ext_resource type="AudioStream" uid="uid://bw1jgmae85e7i" path="res://Resources/Audio/Lvl3-BossFight.wav" id="8_0v7lq"]
+[ext_resource type="Script" path="res://Scripts/NextScene.gd" id="9_03jwi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cp485"]
+size = Vector2(127.063, 156.5)
+
+[node name="Level2" type="Node"]
+script = ExtResource("1_x8vdk")
+
+[node name="Background" parent="." instance=ExtResource("4_4xsb1")]
+z_index = -1
+
+[node name="ScientistSpawn" type="Marker2D" parent="."]
+position = Vector2(1208, 576)
+script = ExtResource("5_y6bu0")
+Enemy = ExtResource("2_5gkum")
+
+[node name="ScientistSpawn2" type="Marker2D" parent="."]
+position = Vector2(1944, 624)
+script = ExtResource("5_y6bu0")
+Enemy = ExtResource("2_5gkum")
+
+[node name="ScientistSpawn3" type="Marker2D" parent="."]
+position = Vector2(1944, 528)
+script = ExtResource("5_y6bu0")
+Enemy = ExtResource("2_5gkum")
+
+[node name="AgentSpawn1" type="Marker2D" parent="."]
+position = Vector2(1160, 616)
+script = ExtResource("5_y6bu0")
+Enemy = ExtResource("3_nqjc6")
+
+[node name="AgentSpawn2" type="Marker2D" parent="."]
+position = Vector2(1160, 528)
+script = ExtResource("5_y6bu0")
+Enemy = ExtResource("3_nqjc6")
+
+[node name="AgentSpawn3" type="Marker2D" parent="."]
+position = Vector2(1600, 520)
+script = ExtResource("5_y6bu0")
+Enemy = ExtResource("3_nqjc6")
+
+[node name="AgentSpawn4" type="Marker2D" parent="."]
+position = Vector2(1600, 624)
+script = ExtResource("5_y6bu0")
+Enemy = ExtResource("3_nqjc6")
+
+[node name="AgentSpawn5" type="Marker2D" parent="."]
+position = Vector2(1640, 576)
+script = ExtResource("5_y6bu0")
+Enemy = ExtResource("3_nqjc6")
+
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Character" parent="YSort" instance=ExtResource("6_3nu5u")]
+position = Vector2(144, 624)
+
+[node name="HUD" parent="." instance=ExtResource("7_bndha")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0v7lq")
+autoplay = true
+bus = &"Music"
+
+[node name="LevelEnd" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("9_03jwi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd"]
+position = Vector2(3304.47, 569.75)
+shape = SubResource("RectangleShape2D_cp485")
+
+[connection signal="ready" from="." to="." method="_level_two"]
+[connection signal="ready" from="." to="Background" method="_level_two"]
+[connection signal="game_over" from="YSort/Character" to="." method="_on_gameOver" flags=18]
+[connection signal="game_over" from="YSort/Character" to="HUD" method="_on_gameOver" flags=18]
+[connection signal="area_entered" from="LevelEnd" to="LevelEnd" method="_on_area_entered"]

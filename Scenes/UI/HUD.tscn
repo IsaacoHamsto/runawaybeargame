@@ -1,15 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c72u8lga501u6"]
+[gd_scene load_steps=6 format=3 uid="uid://c72u8lga501u6"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_s0wbu"]
-[ext_resource type="FontFile" uid="uid://b15ui78hvfg7i" path="res://Resources/Bubbly-Regular.otf" id="2_jnmvm"]
 [ext_resource type="PackedScene" uid="uid://bhlimsgsx376r" path="res://Scenes/UI/PauseMenu.tscn" id="3_cct4x"]
 [ext_resource type="PackedScene" uid="uid://cco8stx16555c" path="res://Scenes/UI/GameOverMenu.tscn" id="4_1rkex"]
 [ext_resource type="Theme" uid="uid://os7lai20iikc" path="res://Resources/Fonts/MainTheme.tres" id="5_6jovv"]
 [ext_resource type="Texture2D" uid="uid://b3uh1kf2cxy2i" path="res://Resources/Heart.png" id="5_hjcgu"]
-
-[sub_resource type="Theme" id="Theme_jgnuq"]
-default_font = ExtResource("2_jnmvm")
-default_font_size = 0
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_s0wbu")
@@ -27,21 +22,12 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_6jovv")
 theme_override_font_sizes/font_size = 50
 
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-
-[node name="HealthLabel" type="Label" parent="."]
-visible = false
-offset_left = 69.0
-offset_top = 69.0
-offset_right = 251.0
-offset_bottom = 140.0
-theme = SubResource("Theme_jgnuq")
-theme_override_font_sizes/font_size = 68
-text = "VIDAS:"
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_cct4x")]
 visible = false

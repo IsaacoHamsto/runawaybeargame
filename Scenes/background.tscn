@@ -1,29 +1,105 @@
-[gd_scene load_steps=5 format=3 uid="uid://4g6urjtk418"]
+[gd_scene load_steps=15 format=3 uid="uid://4g6urjtk418"]
 
 [ext_resource type="Script" path="res://Scripts/background.gd" id="1_a5hgn"]
-[ext_resource type="Texture2D" uid="uid://b51obfu4ltb7a" path="res://Resources/lab_background.png" id="2_1q50j"]
-[ext_resource type="Texture2D" uid="uid://c7y0xjgjyqemg" path="res://Resources/forest_background.png" id="3_13dbg"]
+[ext_resource type="Texture2D" uid="uid://cyopklsky6imq" path="res://Resources/Background/Lab/Lab 1.jpg" id="2_851xk"]
+[ext_resource type="Texture2D" uid="uid://wsf33yd7ypx0" path="res://Resources/Background/Lab/Lab2.jpg" id="3_8pkpp"]
+[ext_resource type="Texture2D" uid="uid://dg425eq1r7wqn" path="res://Resources/Background/Lab/Lab3.png" id="4_i7a27"]
+[ext_resource type="Texture2D" uid="uid://dpqnjv37k4y7w" path="res://Resources/Background/Forest/Forest1.jpg" id="5_m2svy"]
+[ext_resource type="Texture2D" uid="uid://dqu8ec261k7qu" path="res://Resources/Background/Forest/Forest2.jpg" id="6_h8a5r"]
+[ext_resource type="Texture2D" uid="uid://lq4pvsb6ksv5" path="res://Resources/Background/Forest/Forest3.jpg" id="7_j4ui4"]
+[ext_resource type="Texture2D" uid="uid://dy6dgdke1b8ai" path="res://Resources/Background/City/City1.jpg" id="8_psy7a"]
+[ext_resource type="Texture2D" uid="uid://c83mu1adxrid" path="res://Resources/Background/City/City2.jpg" id="9_giomw"]
+[ext_resource type="Texture2D" uid="uid://df4kpcxyjhp3t" path="res://Resources/Background/City/City3.jpg" id="10_fg5ii"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4fpo"]
-size = Vector2(1282.02, 78.7382)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70iyw"]
+size = Vector2(3515, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnrsh"]
+size = Vector2(3373, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2dt2"]
+size = Vector2(3206, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ti4ts"]
+size = Vector2(24, 166)
 
 [node name="Background" type="Node2D"]
 script = ExtResource("1_a5hgn")
 
-[node name="LabSprite" type="Sprite2D" parent="."]
+[node name="Lab" type="Node2D" parent="."]
 visible = false
-position = Vector2(1166.16, 322.75)
-scale = Vector2(1.82213, 1.82213)
-texture = ExtResource("2_1q50j")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="LabSprite"]
+[node name="Lab1" type="Sprite2D" parent="Lab"]
+position = Vector2(1758, 323)
+scale = Vector2(1.08612, 1.08612)
+texture = ExtResource("2_851xk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LabSprite/StaticBody2D"]
-position = Vector2(1.00977, 29.3691)
-shape = SubResource("RectangleShape2D_p4fpo")
+[node name="Lab2" type="Sprite2D" parent="Lab"]
+position = Vector2(586, 323)
+scale = Vector2(1.63728, 1.63728)
+texture = ExtResource("3_8pkpp")
 
-[node name="ForestSprite" type="Sprite2D" parent="."]
+[node name="Lab3" type="Sprite2D" parent="Lab"]
+position = Vector2(2931.23, 323)
+scale = Vector2(1.0876, 1.08696)
+texture = ExtResource("4_i7a27")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Lab"]
+
+[node name="LabWallShape" type="CollisionShape2D" parent="Lab/StaticBody2D"]
+position = Vector2(1760.5, 382)
+shape = SubResource("RectangleShape2D_70iyw")
+
+[node name="Forest" type="Node2D" parent="."]
 visible = false
-position = Vector2(548.569, 321.25)
-scale = Vector2(1.88329, 1.88329)
-texture = ExtResource("3_13dbg")
+
+[node name="Forest2" type="Sprite2D" parent="Forest"]
+position = Vector2(1670, 324)
+scale = Vector2(1.88372, 1.88372)
+texture = ExtResource("6_h8a5r")
+
+[node name="Forest1" type="Sprite2D" parent="Forest"]
+position = Vector2(552, 324)
+scale = Vector2(1.86743, 1.86744)
+texture = ExtResource("5_m2svy")
+
+[node name="Forest3" type="Sprite2D" parent="Forest"]
+position = Vector2(2803, 324)
+scale = Vector2(2.15961, 2.15833)
+texture = ExtResource("7_j4ui4")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Forest"]
+
+[node name="ForestWallShape" type="CollisionShape2D" parent="Forest/StaticBody2D2"]
+position = Vector2(1688.5, 421)
+shape = SubResource("RectangleShape2D_vnrsh")
+
+[node name="City" type="Node2D" parent="."]
+visible = false
+
+[node name="City1" type="Sprite2D" parent="City"]
+position = Vector2(585.71, 322.5)
+scale = Vector2(2.09032, 2.1129)
+texture = ExtResource("8_psy7a")
+
+[node name="City2" type="Sprite2D" parent="City"]
+position = Vector2(1755.78, 324)
+scale = Vector2(1.08361, 1.08361)
+texture = ExtResource("9_giomw")
+
+[node name="City3" type="Sprite2D" parent="City"]
+position = Vector2(2926, 310.501)
+scale = Vector2(1.08425, 1.14549)
+texture = ExtResource("10_fg5ii")
+
+[node name="WallTop" type="StaticBody2D" parent="City"]
+
+[node name="CityWallTopShape" type="CollisionShape2D" parent="City/WallTop"]
+position = Vector2(1601, 421)
+shape = SubResource("RectangleShape2D_f2dt2")
+
+[node name="BorderWall" type="StaticBody2D" parent="City"]
+
+[node name="CityBorderWallShape" type="CollisionShape2D" parent="City/BorderWall"]
+position = Vector2(3193, 574)
+shape = SubResource("RectangleShape2D_ti4ts")

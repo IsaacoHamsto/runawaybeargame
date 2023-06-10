@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://776cst7nbtc"]
+
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_y26kv"]
+[ext_resource type="PackedScene" uid="uid://4g6urjtk418" path="res://Scenes/Background.tscn" id="2_y3cjt"]
+[ext_resource type="PackedScene" uid="uid://cao8gebq4hppf" path="res://Scenes/Characters/Player.tscn" id="3_l7xqc"]
+[ext_resource type="PackedScene" uid="uid://c72u8lga501u6" path="res://Scenes/UI/HUD.tscn" id="3_r388q"]
+[ext_resource type="AudioStream" uid="uid://bw1jgmae85e7i" path="res://Resources/Audio/Lvl3-BossFight.wav" id="4_78ici"]
+[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="6_8ilhp"]
+[ext_resource type="PackedScene" uid="uid://d0nr88yfnfqjs" path="res://Scenes/Characters/enemy_scientist.tscn" id="7_y1507"]
+[ext_resource type="PackedScene" uid="uid://b32bpbupcr7vr" path="res://Scenes/Characters/enemy_willsmith.tscn" id="8_u7vsk"]
+
+[node name="Level3" type="Node"]
+script = ExtResource("1_y26kv")
+
+[node name="Background" parent="." instance=ExtResource("2_y3cjt")]
+
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Character" parent="YSort" instance=ExtResource("3_l7xqc")]
+position = Vector2(56, 592)
+
+[node name="HUD" parent="." instance=ExtResource("3_r388q")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_78ici")
+autoplay = true
+bus = &"Music"
+
+[node name="ScientistSpawn1" type="Marker2D" parent="."]
+position = Vector2(1112, 528)
+script = ExtResource("6_8ilhp")
+Enemy = ExtResource("7_y1507")
+
+[node name="ScientistSpawn2" type="Marker2D" parent="."]
+position = Vector2(1784, 528)
+script = ExtResource("6_8ilhp")
+Enemy = ExtResource("7_y1507")
+
+[node name="ScientistSpawn3" type="Marker2D" parent="."]
+position = Vector2(1744, 616)
+script = ExtResource("6_8ilhp")
+Enemy = ExtResource("7_y1507")
+
+[node name="ScientistSpawn4" type="Marker2D" parent="."]
+position = Vector2(1928, 584)
+script = ExtResource("6_8ilhp")
+Enemy = ExtResource("7_y1507")
+
+[node name="ScientistSpawn5" type="Marker2D" parent="."]
+position = Vector2(2288, 536)
+script = ExtResource("6_8ilhp")
+Enemy = ExtResource("7_y1507")
+
+[node name="ScientistSpawn6" type="Marker2D" parent="."]
+position = Vector2(2288, 616)
+script = ExtResource("6_8ilhp")
+Enemy = ExtResource("7_y1507")
+
+[node name="AgentSpawn1" type="Marker2D" parent="."]
+position = Vector2(1112, 608)
+script = ExtResource("6_8ilhp")
+Enemy = ExtResource("8_u7vsk")
+
+[node name="AgentSpawn2" type="Marker2D" parent="."]
+position = Vector2(1432, 576)
+script = ExtResource("6_8ilhp")
+Enemy = ExtResource("8_u7vsk")
+
+[node name="AgentSpawn3" type="Marker2D" parent="."]
+position = Vector2(1544, 576)
+script = ExtResource("6_8ilhp")
+Enemy = ExtResource("8_u7vsk")
+
+[node name="AgentSpawn4" type="Marker2D" parent="."]
+position = Vector2(2208, 536)
+script = ExtResource("6_8ilhp")
+Enemy = ExtResource("8_u7vsk")
+
+[node name="AgentSpawn5" type="Marker2D" parent="."]
+position = Vector2(2208, 616)
+script = ExtResource("6_8ilhp")
+Enemy = ExtResource("8_u7vsk")
+
+[connection signal="ready" from="." to="." method="_level_three"]
+[connection signal="ready" from="." to="Background" method="_level_three"]

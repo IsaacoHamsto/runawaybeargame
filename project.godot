@@ -18,10 +18,6 @@ boot_splash/image="res://Resources/CIGI_logo.png"
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=1000
 
-[audio]
-
-buses/default_bus_layout=""
-
 [autoload]
 
 GlobalConfig="*res://Scripts/globalConfig.gd"
