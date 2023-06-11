@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b3uh1kf2cxy2i" path="res://Resources/Heart.png" id="5_hjcgu"]
 
 [node name="HUD" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_s0wbu")
 
 [node name="MessageLabel" type="Label" parent="."]

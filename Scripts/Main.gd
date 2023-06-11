@@ -4,6 +4,9 @@ var level
 @onready var music = get_node("Music")
 
 func _ready():
+	get_tree().paused = true
+	await $AnimationPlayer.animation_finished
+	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	for i in get_children():
 		if i.get_class()=="Marker2D":

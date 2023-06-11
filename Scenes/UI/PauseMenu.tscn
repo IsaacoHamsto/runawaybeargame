@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://bhlimsgsx376r"]
 
 [ext_resource type="Theme" uid="uid://os7lai20iikc" path="res://Resources/Fonts/MainTheme.tres" id="1_jeje7"]
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="2_2i7v2"]
@@ -52,17 +52,20 @@ text = "PAUSA"
 horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 shortcut = SubResource("Shortcut_opk4m")
 text = "CONTINUAR"
 
 [node name="ConfigButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 text = "CONFIGURAÇÕES"
 
 [node name="MainMenuButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 text = "VOLTAR AO MENU PRINCIPAL"

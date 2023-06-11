@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b0vrdlpiunijm"]
+[gd_scene load_steps=17 format=3 uid="uid://b0vrdlpiunijm"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_c4rvy"]
 [ext_resource type="PackedScene" uid="uid://d0nr88yfnfqjs" path="res://Scenes/Characters/enemy_scientist.tscn" id="2_7oeu8"]
@@ -8,10 +8,68 @@
 [ext_resource type="PackedScene" uid="uid://cao8gebq4hppf" path="res://Scenes/Characters/Player.tscn" id="6_f4uws"]
 [ext_resource type="PackedScene" uid="uid://c72u8lga501u6" path="res://Scenes/UI/HUD.tscn" id="7_v70ts"]
 [ext_resource type="AudioStream" uid="uid://bt7ee0y15uina" path="res://Resources/Audio/game_music.wav" id="8_b5bdv"]
+[ext_resource type="Shader" path="res://Scenes/Levels/Rect.gdshader" id="8_qparb"]
 [ext_resource type="Script" path="res://Scripts/NextScene.gd" id="9_jd3ds"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tli4i"]
+resource_local_to_scene = true
+shader = ExtResource("8_qparb")
+shader_parameter/color_rgba = Vector4(0, 0, 0, -1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r1oxf"]
 size = Vector2(127, 195)
+
+[sub_resource type="Animation" id="Animation_6wkjw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/ColorRect:material:shader_parameter/color_rgba")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector4(0, 0, 0, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_rqxlf"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/ColorRect:material:shader_parameter/color_rgba")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector4(0, 0, 0, 0), Vector4(0, 0, 0, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_str5s"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/ColorRect:material:shader_parameter/color_rgba")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector4(0, 0, 0, -1), Vector4(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yixs8"]
+_data = {
+"RESET": SubResource("Animation_6wkjw"),
+"fade_in": SubResource("Animation_rqxlf"),
+"fade_out": SubResource("Animation_str5s")
+}
 
 [node name="Main" type="Node"]
 script = ExtResource("1_c4rvy")
@@ -52,6 +110,18 @@ position = Vector2(144, 624)
 
 [node name="HUD" parent="." instance=ExtResource("7_v70ts")]
 
+[node name="Transition" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="Transition"]
+material = SubResource("ShaderMaterial_tli4i")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_b5bdv")
 autoplay = true
@@ -65,6 +135,13 @@ script = ExtResource("9_jd3ds")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd"]
 position = Vector2(3455.5, 549.5)
 shape = SubResource("RectangleShape2D_r1oxf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+autoplay = "fade_in"
+libraries = {
+"": SubResource("AnimationLibrary_yixs8")
+}
 
 [connection signal="ready" from="." to="." method="_level_one"]
 [connection signal="ready" from="." to="Background" method="_level_one"]
