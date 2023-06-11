@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://oniqybb24ehu"]
+[gd_scene load_steps=15 format=3 uid="uid://oniqybb24ehu"]
 
 [ext_resource type="Script" path="res://Scripts/Cutscene.gd" id="1_06q3d"]
 [ext_resource type="Texture2D" uid="uid://dg50wd3w03lyc" path="res://Resources/Cutscenes/489 Sem Título_20230425120110.png" id="1_8v16v"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://c0ericaoojvac" path="res://Resources/Cutscenes/489 Sem Título_20230425120148.png" id="3_2g6vv"]
 [ext_resource type="Texture2D" uid="uid://btsq8ovtb4u1p" path="res://Resources/Cutscenes/489 Sem Título_20230425120152.png" id="4_40vhq"]
 [ext_resource type="Theme" uid="uid://os7lai20iikc" path="res://Resources/Fonts/MainTheme.tres" id="7_4d2ca"]
+[ext_resource type="AudioStream" uid="uid://igvn4o3p7ldx" path="res://Resources/Audio/chil_cutscene_music.wav" id="8_dxajw"]
+[ext_resource type="AudioStream" uid="uid://bdbdteshpyflw" path="res://Resources/Audio/alarm.wav" id="9_sfieb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k7ar1"]
 shader = ExtResource("2_swk7l")
@@ -162,6 +164,18 @@ tracks/11/keys = {
 "update": 0,
 "values": [Vector2(1152, 648)]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AlarmSound:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_qvy8b"]
 resource_name = "initial_cutscene"
@@ -197,7 +211,7 @@ tracks/2/path = NodePath("ColorRect/Parte3:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 6),
+"times": PackedFloat32Array(0, 5.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -233,7 +247,7 @@ tracks/5/path = NodePath("ColorRect/Parte3:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(6, 7),
+"times": PackedFloat32Array(5.6, 6.9),
 "transitions": PackedFloat32Array(5, 0.5),
 "update": 0,
 "values": [Vector2(0, -580), Vector2(0, 0)]
@@ -309,6 +323,18 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1152, 648)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AlarmSound:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cpj85"]
@@ -409,3 +435,10 @@ autoplay = "initial_cutscene"
 libraries = {
 "": SubResource("AnimationLibrary_cpj85")
 }
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_dxajw")
+autoplay = true
+
+[node name="AlarmSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_sfieb")

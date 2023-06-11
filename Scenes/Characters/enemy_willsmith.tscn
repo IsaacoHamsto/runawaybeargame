@@ -241,7 +241,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t1qlp"]
-radius = 96.0
+radius = 72.0
 height = 208.0
 
 [node name="WillSmith" type="CharacterBody2D" groups=["enemies"]]
@@ -310,7 +310,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea"]
-position = Vector2(0, -96)
+position = Vector2(0, -112)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_t1qlp")
 

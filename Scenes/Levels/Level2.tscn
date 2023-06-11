@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c0oylk3nhdyfm"]
+[gd_scene load_steps=20 format=3 uid="uid://c0oylk3nhdyfm"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_x8vdk"]
 [ext_resource type="PackedScene" uid="uid://d0nr88yfnfqjs" path="res://Scenes/Characters/enemy_scientist.tscn" id="2_5gkum"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/NextScene.gd" id="9_03jwi"]
 [ext_resource type="Shader" path="res://Scenes/UI/Cutscene.gdshader" id="9_k8qr5"]
 [ext_resource type="Texture2D" uid="uid://d1l7aaldu42kn" path="res://Resources/Cutscenes/transition1.jpg" id="10_mqd4x"]
+[ext_resource type="AudioStream" uid="uid://c84jqhamuw51m" path="res://Resources/Audio/music2_forest.wav" id="11_owunf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kagsx"]
 resource_local_to_scene = true
@@ -74,7 +75,7 @@ tracks/1/path = NodePath("Transition/TextureRect:material:shader_parameter/color
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 3.7, 4.2),
+"times": PackedFloat32Array(0, 1, 3.7, 4.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector4(0, 0, 0, -1), Vector4(0, 0, 0, 1), Vector4(0, 0, 0, 1), Vector4(0, 0, 0, -1)]
@@ -175,6 +176,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_owunf")
 autoplay = true
 bus = &"Music"
 
