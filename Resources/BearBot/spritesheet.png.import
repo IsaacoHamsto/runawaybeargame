@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfh742lnif3kr"
-path="res://.godot/imported/477 Sem Título_20230410081101.png-728a15cb61ebb02eb8932fee3c85acbf.ctex"
+uid="uid://4xxqaqkhq1mc"
+path="res://.godot/imported/spritesheet.png-89b698dde73197511f156d9f17e2c34a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/BearBot/477 Sem Título_20230410081101.png"
-dest_files=["res://.godot/imported/477 Sem Título_20230410081101.png-728a15cb61ebb02eb8932fee3c85acbf.ctex"]
+source_file="res://Resources/BearBot/spritesheet.png"
+dest_files=["res://.godot/imported/spritesheet.png-89b698dde73197511f156d9f17e2c34a.ctex"]
 
 [params]
 
