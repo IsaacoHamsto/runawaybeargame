@@ -22,6 +22,7 @@ var inRange:bool
 @onready var animation = get_node("AnimationPlayer")
 @onready var sprite = get_node("Sprite2D")
 @onready var rangeArea = get_node("RangeArea")
+@export var deathEffect:PackedScene=preload("res://Scenes/UI/DeathEffect.tscn")
 
 func follow_player():
 	velocity = position.direction_to(player.get("position")) * SPEED
@@ -49,4 +50,11 @@ func _draw():
 func _on_enemy_death():
 	if animation.current_animation == "hit":
 		await animation.animation_finished
+	spawn_effect(deathEffect, position+Vector2(0,-100))
 	queue_free()
+
+func spawn_effect(effect_scene: PackedScene, effect_position:Vector2):
+	if effect_scene:
+		var effect = effect_scene.instantiate()
+		get_tree().current_scene.add_child(effect)
+		effect.position = effect_position

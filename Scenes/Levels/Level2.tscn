@@ -19,37 +19,37 @@ script = ExtResource("1_x8vdk")
 z_index = -1
 
 [node name="ScientistSpawn" type="Marker2D" parent="."]
-position = Vector2(1200, 584)
+position = Vector2(1384, 608)
 script = ExtResource("5_y6bu0")
 Enemy = ExtResource("2_5gkum")
 
 [node name="ScientistSpawn2" type="Marker2D" parent="."]
-position = Vector2(1904, 552)
+position = Vector2(1928, 552)
 script = ExtResource("5_y6bu0")
 Enemy = ExtResource("2_5gkum")
 
 [node name="ScientistSpawn3" type="Marker2D" parent="."]
-position = Vector2(1976, 616)
+position = Vector2(2016, 616)
 script = ExtResource("5_y6bu0")
 Enemy = ExtResource("2_5gkum")
 
 [node name="AgentSpawn1" type="Marker2D" parent="."]
-position = Vector2(1128, 616)
+position = Vector2(1224, 616)
 script = ExtResource("5_y6bu0")
 Enemy = ExtResource("3_nqjc6")
 
 [node name="AgentSpawn2" type="Marker2D" parent="."]
-position = Vector2(1168, 520)
+position = Vector2(1304, 552)
 script = ExtResource("5_y6bu0")
 Enemy = ExtResource("3_nqjc6")
 
 [node name="AgentSpawn3" type="Marker2D" parent="."]
-position = Vector2(1624, 552)
+position = Vector2(1680, 552)
 script = ExtResource("5_y6bu0")
 Enemy = ExtResource("3_nqjc6")
 
 [node name="AgentSpawn4" type="Marker2D" parent="."]
-position = Vector2(1552, 616)
+position = Vector2(1592, 616)
 script = ExtResource("5_y6bu0")
 Enemy = ExtResource("3_nqjc6")
 

@@ -28,8 +28,8 @@ func _ready():
 	health = MAX_HEALTH
 
 func _physics_process(delta):
-	if !onGameplay: return
-	if current_state!=State.Attack and current_state!=State.Hit: current_state=State.Idle
+	if !onGameplay or current_state==State.Hit: return
+	if current_state!=State.Attack: current_state=State.Idle
 	
 	var left = Input.is_action_pressed("ui_left")
 	var right = Input.is_action_pressed("ui_right")
@@ -75,8 +75,14 @@ func attack():
 	await animation.animation_finished
 	current_state=State.Idle
 
+func hit():
+	current_state=State.Hit
+	animation.play("hit")
+	await animation.animation_finished
+	current_state=State.Idle
+
 func take_damage(amount: int):
 	health-=amount
+	hit()
 	if health<=0:
 		death()
-	await get_tree().create_timer(1).timeout
