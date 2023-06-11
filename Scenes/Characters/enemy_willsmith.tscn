@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b32bpbupcr7vr"]
+[gd_scene load_steps=22 format=3 uid="uid://b32bpbupcr7vr"]
 
 [ext_resource type="Script" path="res://Scripts/WillSmith.gd" id="1_nmb0v"]
 [ext_resource type="Texture2D" uid="uid://dlnvflkil1o7u" path="res://Resources/WillSmith/spritesheet.png" id="2_4a43q"]
@@ -6,8 +6,11 @@
 [ext_resource type="Script" path="res://Scripts/HitBox.gd" id="4_l2tj7"]
 [ext_resource type="Script" path="res://Scripts/HurtBox.gd" id="5_eole3"]
 [ext_resource type="Texture2D" uid="uid://chy7gq8m1wfqy" path="res://Resources/ice_particle_white.png" id="5_wpufv"]
+[ext_resource type="AudioStream" uid="uid://cwfcy2sa7hudy" path="res://Resources/Audio/shock.wav" id="7_li7xb"]
+[ext_resource type="AudioStream" uid="uid://mlvedtbdygeo" path="res://Resources/Audio/crush_hit.wav" id="8_t2brv"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qynku"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iily7"]
+resource_local_to_scene = true
 shader = ExtResource("2_kq276")
 shader_parameter/color_rgb = Vector3(0, 0, 0)
 
@@ -95,6 +98,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackSound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HitSound:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_hdjam"]
 resource_name = "attack"
@@ -123,6 +150,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AttackSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_7gyla"]
 resource_name = "hit"
@@ -146,6 +185,18 @@ tracks/1/path = NodePath("Sprite2D/GPUParticles2D:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -204,7 +255,7 @@ position = Vector2(1.52588e-05, -96)
 scale = Vector2(6.4, 9.6)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_qynku")
+material = SubResource("ShaderMaterial_iily7")
 position = Vector2(2.5034e-06, -128)
 scale = Vector2(0.438, 0.438)
 texture = ExtResource("2_4a43q")
@@ -262,5 +313,14 @@ collision_mask = 4
 position = Vector2(0, -96)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_t1qlp")
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_li7xb")
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_t2brv")
+bus = &"SFX"
 
 [connection signal="enemy_death" from="." to="." method="_on_enemy_death"]

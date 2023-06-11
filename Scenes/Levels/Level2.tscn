@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0oylk3nhdyfm"]
+[gd_scene load_steps=10 format=3 uid="uid://c0oylk3nhdyfm"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_x8vdk"]
 [ext_resource type="PackedScene" uid="uid://d0nr88yfnfqjs" path="res://Scenes/Characters/enemy_scientist.tscn" id="2_5gkum"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Scripts/Spawner.gd" id="5_y6bu0"]
 [ext_resource type="PackedScene" uid="uid://cao8gebq4hppf" path="res://Scenes/Characters/Player.tscn" id="6_3nu5u"]
 [ext_resource type="PackedScene" uid="uid://c72u8lga501u6" path="res://Scenes/UI/HUD.tscn" id="7_bndha"]
-[ext_resource type="AudioStream" uid="uid://bw1jgmae85e7i" path="res://Resources/Audio/Lvl3-BossFight.wav" id="8_0v7lq"]
 [ext_resource type="Script" path="res://Scripts/NextScene.gd" id="9_03jwi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cp485"]
@@ -20,42 +19,37 @@ script = ExtResource("1_x8vdk")
 z_index = -1
 
 [node name="ScientistSpawn" type="Marker2D" parent="."]
-position = Vector2(1208, 576)
+position = Vector2(1200, 584)
 script = ExtResource("5_y6bu0")
 Enemy = ExtResource("2_5gkum")
 
 [node name="ScientistSpawn2" type="Marker2D" parent="."]
-position = Vector2(1944, 624)
+position = Vector2(1904, 552)
 script = ExtResource("5_y6bu0")
 Enemy = ExtResource("2_5gkum")
 
 [node name="ScientistSpawn3" type="Marker2D" parent="."]
-position = Vector2(1944, 528)
+position = Vector2(1976, 616)
 script = ExtResource("5_y6bu0")
 Enemy = ExtResource("2_5gkum")
 
 [node name="AgentSpawn1" type="Marker2D" parent="."]
-position = Vector2(1160, 616)
+position = Vector2(1128, 616)
 script = ExtResource("5_y6bu0")
 Enemy = ExtResource("3_nqjc6")
 
 [node name="AgentSpawn2" type="Marker2D" parent="."]
-position = Vector2(1160, 528)
+position = Vector2(1168, 520)
 script = ExtResource("5_y6bu0")
 Enemy = ExtResource("3_nqjc6")
 
 [node name="AgentSpawn3" type="Marker2D" parent="."]
-position = Vector2(1600, 520)
+position = Vector2(1624, 552)
 script = ExtResource("5_y6bu0")
 Enemy = ExtResource("3_nqjc6")
 
 [node name="AgentSpawn4" type="Marker2D" parent="."]
-position = Vector2(1600, 624)
-script = ExtResource("5_y6bu0")
-Enemy = ExtResource("3_nqjc6")
-
-[node name="AgentSpawn5" type="Marker2D" parent="."]
-position = Vector2(1640, 576)
+position = Vector2(1552, 616)
 script = ExtResource("5_y6bu0")
 Enemy = ExtResource("3_nqjc6")
 
@@ -68,7 +62,6 @@ position = Vector2(144, 624)
 [node name="HUD" parent="." instance=ExtResource("7_bndha")]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_0v7lq")
 autoplay = true
 bus = &"Music"
 

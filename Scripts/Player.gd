@@ -13,6 +13,14 @@ var MAX_HEALTH := 3
 var onGameplay:bool = false
 var health := MAX_HEALTH
 
+enum State{
+	Idle,
+	Walk,
+	Attack,
+	Hit
+}
+var current_state = State.Idle
+
 func _ready():
 	onGameplay=true
 	position = INITIAL_POSITION
@@ -21,6 +29,7 @@ func _ready():
 
 func _physics_process(delta):
 	if !onGameplay: return
+	if current_state!=State.Attack and current_state!=State.Hit: current_state=State.Idle
 	
 	var left = Input.is_action_pressed("ui_left")
 	var right = Input.is_action_pressed("ui_right")
@@ -36,17 +45,23 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_attack"):
 		attack()
 	
-	if direction.length() > 0: direction = direction.normalized()
-	
-	velocity = Vector2.ONE*direction*SPEED
-	move_and_slide()
-	
-	position.x = clamp(position.x, 0, LEVEL_EXTENSION*screenSize.x)
-	position.y = clamp(position.y, 0, screenSize.y)
+	if direction.length() > 0 and current_state!=State.Hit: 
+		if current_state!=State.Attack: current_state = State.Walk
+		
+		direction = direction.normalized()
+		velocity = Vector2.ONE*direction*SPEED
+		move_and_slide()
+		position.x = clamp(position.x, 0, LEVEL_EXTENSION*screenSize.x)
+		position.y = clamp(position.y, 0, screenSize.y)
 	
 	if direction.x != 0:
 		$Sprite2D.scale.x = -SCALE if direction.x < 0 else SCALE
-		$AnimationPlayer.play("walk")
+	
+	match current_state:
+		State.Idle:
+			animation.play("idle")
+		State.Walk:
+			animation.play("walk")
 
 func death():
 	onGameplay=false
@@ -55,9 +70,13 @@ func death():
 	emit_signal("game_over")
 
 func attack():
+	current_state=State.Attack
 	animation.play("attack")
+	await animation.animation_finished
+	current_state=State.Idle
 
 func take_damage(amount: int):
 	health-=amount
 	if health<=0:
 		death()
+	await get_tree().create_timer(1).timeout

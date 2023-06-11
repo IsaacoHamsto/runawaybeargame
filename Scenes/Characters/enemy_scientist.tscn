@@ -1,12 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://d0nr88yfnfqjs"]
+[gd_scene load_steps=20 format=3 uid="uid://d0nr88yfnfqjs"]
 
 [ext_resource type="Script" path="res://Scripts/Scientist.gd" id="1_ajgto"]
 [ext_resource type="Texture2D" uid="uid://c2s0yw2sdbodf" path="res://Resources/Scientist/spritesheet (1).png" id="2_atc0h"]
 [ext_resource type="Shader" path="res://Resources/Flash.gdshader" id="2_y0qdt"]
 [ext_resource type="Script" path="res://Scripts/HurtBox.gd" id="3_weamc"]
 [ext_resource type="Texture2D" uid="uid://chy7gq8m1wfqy" path="res://Resources/ice_particle_white.png" id="4_16wy0"]
+[ext_resource type="AudioStream" uid="uid://dgrijd5cjc3uk" path="res://Resources/Audio/pew.wav" id="6_4ggw7"]
+[ext_resource type="AudioStream" uid="uid://mlvedtbdygeo" path="res://Resources/Audio/crush_hit.wav" id="7_ni6lc"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tx2ce"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n8os6"]
+resource_local_to_scene = true
 shader = ExtResource("2_y0qdt")
 shader_parameter/color_rgb = Vector3(0, 0, 0)
 
@@ -67,6 +70,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShootSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitSound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_3l74f"]
 resource_name = "attack"
@@ -90,12 +117,24 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"shoot"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShootSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_jihj6"]
@@ -120,6 +159,18 @@ tracks/1/path = NodePath("Sprite2D/GPUParticles2D:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -164,7 +215,7 @@ position = Vector2(-1.43051e-06, -84)
 scale = Vector2(11.6, 8.4)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_tx2ce")
+material = SubResource("ShaderMaterial_n8os6")
 position = Vector2(1, -115)
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("2_atc0h")
@@ -182,7 +233,7 @@ position = Vector2(0, -96)
 shape = SubResource("CapsuleShape2D_ijube")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
-position = Vector2(-8.33333, 958.333)
+position = Vector2(-8.33333, -41.6666)
 scale = Vector2(8.33333, 8.33333)
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_faq20")
@@ -212,5 +263,14 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea"]
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_r2fpu")
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4ggw7")
+volume_db = 6.0
+bus = &"SFX"
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ni6lc")
+bus = &"SFX"
 
 [connection signal="enemy_death" from="." to="." method="_on_enemy_death"]
