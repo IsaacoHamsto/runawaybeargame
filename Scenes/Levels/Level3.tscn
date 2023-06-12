@@ -1,16 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://776cst7nbtc"]
+[gd_scene load_steps=20 format=3 uid="uid://tey8rf1c6dd"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_y26kv"]
 [ext_resource type="PackedScene" uid="uid://4g6urjtk418" path="res://Scenes/Background.tscn" id="2_y3cjt"]
 [ext_resource type="PackedScene" uid="uid://cao8gebq4hppf" path="res://Scenes/Characters/Player.tscn" id="3_l7xqc"]
 [ext_resource type="PackedScene" uid="uid://c72u8lga501u6" path="res://Scenes/UI/HUD.tscn" id="3_r388q"]
-[ext_resource type="Shader" path="res://Scenes/Levels/Rect.gdshader" id="5_36bc8"]
+[ext_resource type="PackedScene" uid="uid://w3l67x3lveiv" path="res://Scenes/Characters/MegaMawl_boss.tscn" id="4_5yxy2"]
+[ext_resource type="Shader" path="res://Resources/Shaders/Rect.gdshader" id="5_36bc8"]
 [ext_resource type="AudioStream" uid="uid://bfs7ndf7u2blf" path="res://Resources/Audio/Lvl3-City.wav" id="5_lfy3s"]
-[ext_resource type="Shader" path="res://Scenes/UI/Cutscene.gdshader" id="6_05mmh"]
+[ext_resource type="Shader" path="res://Resources/Shaders/Texture.gdshader" id="6_05mmh"]
 [ext_resource type="Script" path="res://Scripts/Spawner.gd" id="6_8ilhp"]
 [ext_resource type="Texture2D" uid="uid://b2537f7rqofbl" path="res://Resources/Cutscenes/trasition2.jpg" id="7_cjo7f"]
 [ext_resource type="PackedScene" uid="uid://d0nr88yfnfqjs" path="res://Scenes/Characters/enemy_scientist.tscn" id="7_y1507"]
 [ext_resource type="PackedScene" uid="uid://b32bpbupcr7vr" path="res://Scenes/Characters/enemy_willsmith.tscn" id="8_u7vsk"]
+[ext_resource type="AudioStream" uid="uid://bw1jgmae85e7i" path="res://Resources/Audio/Lvl3-BossFight.wav" id="10_s7f8u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v1o06"]
 resource_local_to_scene = true
@@ -110,6 +112,9 @@ y_sort_enabled = true
 [node name="Character" parent="YSort" instance=ExtResource("3_l7xqc")]
 position = Vector2(56, 592)
 
+[node name="MegaMawl" parent="YSort" instance=ExtResource("4_5yxy2")]
+position = Vector2(3320, 560)
+
 [node name="HUD" parent="." instance=ExtResource("3_r388q")]
 
 [node name="Transition" type="CanvasLayer" parent="."]
@@ -138,6 +143,10 @@ stretch_mode = 5
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_lfy3s")
 autoplay = true
+bus = &"Music"
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_s7f8u")
 bus = &"Music"
 
 [node name="ScientistSpawn1" type="Marker2D" parent="."]
@@ -196,3 +205,6 @@ libraries = {
 [connection signal="ready" from="." to="Background" method="_level_three"]
 [connection signal="game_over" from="YSort/Character" to="." method="_on_gameOver"]
 [connection signal="game_over" from="YSort/Character" to="HUD" method="_on_gameOver"]
+[connection signal="enemy_death" from="YSort/MegaMawl" to="." method="_on_boss_end"]
+[connection signal="start_bossfight" from="YSort/MegaMawl" to="." method="_on_bossfight"]
+[connection signal="start_bossfight" from="YSort/MegaMawl" to="YSort/Character" method="_on_bossfight"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b0vrdlpiunijm"]
+[gd_scene load_steps=17 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_c4rvy"]
 [ext_resource type="PackedScene" uid="uid://d0nr88yfnfqjs" path="res://Scenes/Characters/enemy_scientist.tscn" id="2_7oeu8"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cao8gebq4hppf" path="res://Scenes/Characters/Player.tscn" id="6_f4uws"]
 [ext_resource type="PackedScene" uid="uid://c72u8lga501u6" path="res://Scenes/UI/HUD.tscn" id="7_v70ts"]
 [ext_resource type="AudioStream" uid="uid://bt7ee0y15uina" path="res://Resources/Audio/game_music.wav" id="8_b5bdv"]
-[ext_resource type="Shader" path="res://Scenes/Levels/Rect.gdshader" id="8_qparb"]
+[ext_resource type="Shader" path="res://Resources/Shaders/Rect.gdshader" id="8_qparb"]
 [ext_resource type="Script" path="res://Scripts/NextScene.gd" id="9_jd3ds"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tli4i"]

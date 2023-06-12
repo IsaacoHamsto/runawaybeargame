@@ -19,7 +19,6 @@ func spawn_enemy(spawnLocation: Vector2, enemyScene: PackedScene):
 	enemyNode.position = spawnLocation
 
 func _on_gameOver():
-	#get_tree().call_group("enemies", "queue_free")
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _level_one():
@@ -30,3 +29,14 @@ func _level_two():
 
 func _level_three():
 	level=3
+
+func _on_bossfight():
+	$Music.stop()
+	$BossMusic.play()
+
+func _on_boss_end():
+	await get_tree().create_timer(3).timeout
+	$AnimationPlayer.play("fade_out")
+	await $AnimationPlayer.animation_finished
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_tree().change_scene_to_file("res://Scenes/UI/Cutscene_end.tscn")

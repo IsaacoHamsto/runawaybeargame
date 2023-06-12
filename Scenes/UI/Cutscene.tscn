@@ -1,21 +1,21 @@
-[gd_scene load_steps=15 format=3 uid="uid://oniqybb24ehu"]
+[gd_scene load_steps=15 format=3 uid="uid://ddfxghdrt668j"]
 
 [ext_resource type="Script" path="res://Scripts/Cutscene.gd" id="1_06q3d"]
 [ext_resource type="Texture2D" uid="uid://dg50wd3w03lyc" path="res://Resources/Cutscenes/489 Sem Título_20230425120110.png" id="1_8v16v"]
-[ext_resource type="Shader" path="res://Scenes/UI/Cutscene.gdshader" id="2_swk7l"]
 [ext_resource type="Texture2D" uid="uid://cije8dsrx2on3" path="res://Resources/Cutscenes/489 Sem Título_20230425120114.png" id="2_tgv5c"]
 [ext_resource type="Texture2D" uid="uid://c0ericaoojvac" path="res://Resources/Cutscenes/489 Sem Título_20230425120148.png" id="3_2g6vv"]
+[ext_resource type="Shader" path="res://Resources/Shaders/Texture.gdshader" id="3_6owe3"]
 [ext_resource type="Texture2D" uid="uid://btsq8ovtb4u1p" path="res://Resources/Cutscenes/489 Sem Título_20230425120152.png" id="4_40vhq"]
 [ext_resource type="Theme" uid="uid://os7lai20iikc" path="res://Resources/Fonts/MainTheme.tres" id="7_4d2ca"]
 [ext_resource type="AudioStream" uid="uid://igvn4o3p7ldx" path="res://Resources/Audio/chil_cutscene_music.wav" id="8_dxajw"]
 [ext_resource type="AudioStream" uid="uid://bdbdteshpyflw" path="res://Resources/Audio/alarm.wav" id="9_sfieb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k7ar1"]
-shader = ExtResource("2_swk7l")
+shader = ExtResource("3_6owe3")
 shader_parameter/color_rgba = Vector4(0, 0, 0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e1dcp"]
-shader = ExtResource("2_swk7l")
+shader = ExtResource("3_6owe3")
 shader_parameter/color_rgba = Vector4(0, 0, 0, 0)
 
 [sub_resource type="Animation" id="Animation_0nc0w"]

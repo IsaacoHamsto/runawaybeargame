@@ -276,6 +276,7 @@ transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransitio
 
 [node name="BearBot" type="CharacterBody2D"]
 position = Vector2(0, -88)
+collision_layer = 2
 script = ExtResource("1_7aslq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

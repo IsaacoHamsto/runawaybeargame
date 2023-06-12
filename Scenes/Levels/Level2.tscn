@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c0oylk3nhdyfm"]
+[gd_scene load_steps=20 format=3 uid="uid://b8gehmclss8h0"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_x8vdk"]
 [ext_resource type="PackedScene" uid="uid://d0nr88yfnfqjs" path="res://Scenes/Characters/enemy_scientist.tscn" id="2_5gkum"]
@@ -7,20 +7,20 @@
 [ext_resource type="Script" path="res://Scripts/Spawner.gd" id="5_y6bu0"]
 [ext_resource type="PackedScene" uid="uid://cao8gebq4hppf" path="res://Scenes/Characters/Player.tscn" id="6_3nu5u"]
 [ext_resource type="PackedScene" uid="uid://c72u8lga501u6" path="res://Scenes/UI/HUD.tscn" id="7_bndha"]
-[ext_resource type="Shader" path="res://Scenes/Levels/Rect.gdshader" id="8_bjpa3"]
+[ext_resource type="Shader" path="res://Resources/Shaders/Rect.gdshader" id="8_ytrih"]
+[ext_resource type="Shader" path="res://Resources/Shaders/Texture.gdshader" id="9_3cjkg"]
 [ext_resource type="Script" path="res://Scripts/NextScene.gd" id="9_03jwi"]
-[ext_resource type="Shader" path="res://Scenes/UI/Cutscene.gdshader" id="9_k8qr5"]
 [ext_resource type="Texture2D" uid="uid://d1l7aaldu42kn" path="res://Resources/Cutscenes/transition1.jpg" id="10_mqd4x"]
 [ext_resource type="AudioStream" uid="uid://c84jqhamuw51m" path="res://Resources/Audio/music2_forest.wav" id="11_owunf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kagsx"]
 resource_local_to_scene = true
-shader = ExtResource("8_bjpa3")
+shader = ExtResource("8_ytrih")
 shader_parameter/color_rgba = Vector4(0, 0, 0, -1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ru2x"]
 resource_local_to_scene = true
-shader = ExtResource("9_k8qr5")
+shader = ExtResource("9_3cjkg")
 shader_parameter/color_rgba = Vector4(0, 0, 0, -1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cp485"]

@@ -86,3 +86,6 @@ func take_damage(amount: int):
 	hit()
 	if health<=0:
 		death()
+
+func _on_bossfight():
+	$Camera2D.limit_left=$Camera2D.limit_right
